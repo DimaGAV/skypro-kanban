@@ -1,10 +1,17 @@
+import Column from "../Column/Column";
+
 const Main = () => {
     return ( <main className="main">
     <div className="container">
         
         <div className="main__block">
             <div className="main__content">
-                <div className="main__column column">
+            <Column title="БЕЗ СТАТУСА" />
+            <Column title="НУЖНО СДЕЛАТЬ" />
+            <Column title="В РАБОТЕ" />
+            <Column title="ТЕСТИРОВАНИЕ" />
+            <Column title="ГОТОВО" />
+                {/* <div className="main__column">
                     <div className="column__title">
                         <p>Без статуса</p>
                     </div>
@@ -429,11 +436,8 @@ const Main = () => {
                             </div>
                         </div>
                     </div>
-                </div>
-        
-                
+                </div> */}
             </div>
-        
         </div>
     </div>
 </main> );
