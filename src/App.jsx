@@ -5,7 +5,7 @@ import Main from './components/Main/Main'
 import PopBrowse from './components/Popups/PopBrowse/PopBrowse'
 import PopNewCard from './components/Popups/PopNewCard/PopNewCard'
 import PopUser from './components/Popups/PopUser/PopUser'
-import { cardList } from './data'
+import { cardList, statusList } from './data'
 
 
 
@@ -34,7 +34,8 @@ function App() {
       <PopNewCard />
       <PopBrowse />
       <Header onCardAdd={onCardAdd}/>
-      <Main cards={cards}/>
+      
+      {isLoading ? <p>Данные загружаются...</p> : <Main cards={cards}/>}
 		</div>
   )
 }
