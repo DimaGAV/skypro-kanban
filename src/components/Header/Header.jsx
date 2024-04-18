@@ -1,4 +1,17 @@
+import { useState } from "react";
+
 const Header = () => {
+	const [userWindow, setWindow] = useState(true)
+	function handleClick() {
+		setWindow(!userWindow)
+
+		if (userWindow){
+			document.getElementById("user-set-target").style.display = "block"
+		}
+		else {
+			document.getElementById("user-set-target").style.display = "none"
+		}
+	}
     return ( 
         <header className="header">
 			<div className="container">
@@ -11,7 +24,8 @@ const Header = () => {
 					</div>
 					<nav className="header__nav">
 						<button className="header__btn-main-new _hover01" id="btnMainNew"><a href="#popNewCard">Создать новую задачу</a></button>
-						<a href="#user-set-target" className="header__user _hover02">Ivan Ivanov</a>
+						<a href="#" 
+						className="header__user _hover02" onClick = {handleClick}>Ivan Ivanov</a>
 						<div className="header__pop-user-set pop-user-set" id="user-set-target">
 							<p className="pop-user-set__name">Ivan Ivanov</p>
 							<p className="pop-user-set__mail">ivan.ivanov@gmail.com</p>
