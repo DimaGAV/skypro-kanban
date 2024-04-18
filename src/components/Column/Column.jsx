@@ -6,8 +6,8 @@ const Column = ({title}) => {
         <p>{title}</p>
     </div>
     <div className="cards">
-        <Card category="Resaerch" title="Изучить редактор" date="12.11.24" />
-        <Card category="Web Desing" title="Запилить главную" date="12.12.24" />
+        <Card topic="Resaerch" title="Изучить редактор" date="12.11.24" />
+        <Card topic="Web Desing" title="Запилить главную" date="12.12.24" />
     </div>
 </div> );
 }

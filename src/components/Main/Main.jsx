@@ -1,7 +1,10 @@
+import { statusList } from "../../data";
 import Column from "../Column/Column";
 
-const Main = () => {
-    return ( <main className="main">
+
+const Main = ({cards}) => {
+    return (
+    <main className="main">
     <div className="container">
         <div className="main__block">
             <div className="main__content">
