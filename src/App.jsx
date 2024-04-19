@@ -16,8 +16,8 @@ function App() {
   function onCardAdd() {
     const newCard = {
         id: cards.length + 1,
-        topic: "Web Design",
-        title: "Название задачи",
+        topic: "Тема",
+        title: "Новая задача",
         date: new Date().toLocaleDateString(),
         status: statusList[0]
     }
