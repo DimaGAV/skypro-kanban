@@ -15,7 +15,7 @@ function App() {
 
   function onCardAdd() {
     const newCard = {
-        id: cards.length++,
+        id: cards.length + 1,
         topic: "Web Design",
         title: "Название задачи",
         date: new Date().toLocaleDateString(),
