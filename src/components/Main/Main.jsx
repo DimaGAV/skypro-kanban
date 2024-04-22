@@ -16,7 +16,6 @@ const Main = ({cards}) => {
               />
              ))}
             </div>
-            
         </div>
     </div>
 </main> );
