@@ -17,7 +17,7 @@ function App() {
     const newCard = {
         id: cards.length + 1,
         topic: "Тема",
-        title: "Новая задача",
+        title: "Название задачи",
         date: new Date().toLocaleDateString(),
         status: statusList[0]
     }

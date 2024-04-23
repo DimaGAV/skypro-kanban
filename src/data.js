@@ -16,7 +16,7 @@ export const cardList = [
     },
     {
         id: 2,
-        topic: "Reaserch",
+        topic: "Research",
         title: "Название задачи",
         date: "15.04.2024",
         status: statusList[1]
@@ -37,7 +37,7 @@ export const cardList = [
     },
     {
         id: 5,
-        topic: "Web Design",
+        topic: "Research",
         title: "Название задачи",
         date: "15.07.2024",
         status: statusList[4]
