@@ -1,10 +1,13 @@
+import { CardTopic, TopicText } from "./CardTheme.styled";
+
 const Card = ({topic, title, date}) => {
-    return ( <div className="cards__item">
+    return ( 
+<div className="cards__item">
     <div className="cards__card card">
         <div className="card__group">
-            <div className="card__theme _green">
-                <p className="_green">{topic}</p>
-            </div>
+        <CardTopic $topicColor="_purple">
+            <TopicText>{topic}</TopicText>
+        </CardTopic>
             <a href="#popBrowse" target="_self">
                 <div className="card__btn">
                     <div></div>
