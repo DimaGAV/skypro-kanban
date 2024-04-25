@@ -1,17 +1,16 @@
 import { getTopicColor } from "../../data";
-import { CardTopic, TopicText } from "./CardTheme.styled";
-import { CardTitle } from "./CardTitle.styled";
-import { CardsCard, CardsItem } from "./Cards.styled";
+import * as T from "./CardTheme.styled";
+import * as S from "./Cards.styled";
 
 const Card = ({topic, title, date}) => {
     const topicColor = getTopicColor(topic)
     return ( 
-<CardsItem>
-    <CardsCard>
-        <div className="card__group">
-        <CardTopic $topicColor={topicColor}>
-            <TopicText>{topic}</TopicText>
-        </CardTopic>
+<S.Item>
+    <S.Card>
+        <T.Group>
+        <T.Topic $topicColor={topicColor}>
+            <T.TopicText>{topic}</T.TopicText>
+        </T.Topic>
             <a href="#popBrowse" target="_self">
                 <div className="card__btn">
                     <div></div>
@@ -19,10 +18,10 @@ const Card = ({topic, title, date}) => {
                     <div></div>
                 </div>
             </a>
-        </div>
+        </T.Group>
         <div className="card__content">
             <a href="" target="_blank">
-                <CardTitle>{title}</CardTitle>
+                <T.Title>{title}</T.Title>
             </a>
             <div className="card__date">
                 <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13" fill="none">
@@ -39,8 +38,8 @@ const Card = ({topic, title, date}) => {
                 <p>{date}</p>
             </div>
         </div>
-    </CardsCard>
-</CardsItem> );
+    </S.Card>
+</S.Item> );
 }
  
 export default Card;

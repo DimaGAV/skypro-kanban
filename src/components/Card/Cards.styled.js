@@ -6,14 +6,14 @@ width: 100%;
   position: relative;
 `;
 
-export const CardsItem = styled.div`
+export const Item = styled.div`
 padding: 5px;
   animation-name: card-animation;
   animation-duration: 500ms;
   animation-timing-function: linear;
 `;
 
-export const CardsCard = styled.div`
+export const Card = styled.div`
 width: 220px;
   height: 130px;
   background-color: #FFFFFF;

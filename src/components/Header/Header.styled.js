@@ -18,6 +18,10 @@ export const Block = styled.div`
   padding: 0 10px;
 `;
 
+export const Logo = styled.div`
+width: 85px;
+`;
+
 export const Nav = styled.nav`
   max-width: 290px;
   padding: 0;
