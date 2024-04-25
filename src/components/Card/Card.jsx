@@ -1,5 +1,6 @@
 import { CardTopic, TopicText } from "./CardTheme.styled";
 import { CardTitle } from "./CardTitle.styled";
+import { CardsCard, CardsItem } from "./Cards.styled";
 
 const getTopicColor = (topic) => {
     if (topic === "Web Design") {
@@ -14,8 +15,8 @@ const getTopicColor = (topic) => {
 const Card = ({topic, title, date}) => {
     const topicColor = getTopicColor(topic)
     return ( 
-<div className="cards__item">
-    <div className="cards__card">
+<CardsItem>
+    <CardsCard>
         <div className="card__group">
         <CardTopic $topicColor={topicColor}>
             <TopicText>{topic}</TopicText>
@@ -48,8 +49,8 @@ const Card = ({topic, title, date}) => {
                 <p>{date}</p>
             </div>
         </div>
-    </div>
-</div> );
+    </CardsCard>
+</CardsItem> );
 }
  
 export default Card;

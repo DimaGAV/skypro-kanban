@@ -879,13 +879,13 @@ body {
   border-radius: 50%;
   background-color: #94A6BE;
 }
-.card__title {
+/* .card__title {
   font-size: 14px;
   font-weight: 500;
   line-height: 18px;
   color: #000000;
   margin-bottom: 10px;
-}
+} */
 .card__content {
   height: 64px;
   display: flex;
