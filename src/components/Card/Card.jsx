@@ -1,4 +1,5 @@
 import { CardTopic, TopicText } from "./CardTheme.styled";
+import { CardTitle } from "./CardTitle.styled";
 
 const getTopicColor = (topic) => {
     if (topic === "Web Design") {
@@ -14,7 +15,7 @@ const Card = ({topic, title, date}) => {
     const topicColor = getTopicColor(topic)
     return ( 
 <div className="cards__item">
-    <div className="cards__card card">
+    <div className="cards__card">
         <div className="card__group">
         <CardTopic $topicColor={topicColor}>
             <TopicText>{topic}</TopicText>
@@ -29,7 +30,8 @@ const Card = ({topic, title, date}) => {
         </div>
         <div className="card__content">
             <a href="" target="_blank">
-                <h3 className="card__title">{title}</h3>
+            {/* <h3 className="card__title">{title}</h3> */}
+                <CardTitle>{title}</CardTitle>
             </a>
             <div className="card__date">
                 <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13" fill="none">

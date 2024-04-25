@@ -854,17 +854,17 @@ body {
   align-items: center;
   justify-content: space-between;
 }
-.card__theme {
+/* .card__theme {
   width: auto;
   height: 20px;
   padding: 5px 14px;
   border-radius: 18px;
-}
-.card__theme p {
+} */
+/* .card__theme p {
   font-size: 10px;
   font-weight: 600;
   line-height: 10px;
-}
+} */
 .card__btn {
   width: 24px;
   height: 24px;
