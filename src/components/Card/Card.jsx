@@ -1,16 +1,7 @@
+import { getTopicColor } from "../../data";
 import { CardTopic, TopicText } from "./CardTheme.styled";
 import { CardTitle } from "./CardTitle.styled";
 import { CardsCard, CardsItem } from "./Cards.styled";
-
-const getTopicColor = (topic) => {
-    if (topic === "Web Design") {
-        return "_orange";
-    } else if (topic === "Research") {
-        return "_green";
-    } else if (topic === "Copywriting") {
-        return "_purple";
-    } else {return "_gray"}
-}
 
 const Card = ({topic, title, date}) => {
     const topicColor = getTopicColor(topic)
