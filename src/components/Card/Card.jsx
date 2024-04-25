@@ -22,7 +22,6 @@ const Card = ({topic, title, date}) => {
         </div>
         <div className="card__content">
             <a href="" target="_blank">
-            {/* <h3 className="card__title">{title}</h3> */}
                 <CardTitle>{title}</CardTitle>
             </a>
             <div className="card__date">

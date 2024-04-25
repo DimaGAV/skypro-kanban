@@ -1,4 +1,6 @@
 import { useState } from "react";
+import * as S from "./Header.styled";
+import { Container } from "../Container/Container.styled";
 
 const Header = ({onCardAdd}) => {
 	const [userWindow, setWindow] = useState(true)
@@ -13,19 +15,19 @@ const Header = ({onCardAdd}) => {
 		}
 	}
     return ( 
-        <header className="header">
-			<div className="container">
-				<div className="header__block">
+        <S.Header>
+			<Container>
+				<S.Block>
 					<div className="header__logo _show _light">
 						<a href="" target="_self"><img src="/images/logo.png" alt="logo" /></a>
 					</div>
 					<div className="header__logo _dark">
 						<a href="" target="_self"><img src="/images/logo_dark.png" alt="logo" /></a>
 					</div>
-					<nav className="header__nav">
-						<button onClick = {onCardAdd} className="header__btn-main-new _hover01" id="btnMainNew"><a href="#">Создать новую задачу</a></button>
-						<a href="#" 
-						className="header__user _hover02" onClick = {handleClick}>Ivan Ivanov</a>
+					<S.Nav>
+						<S.BtnMainNew onClick = {onCardAdd} id="btnMainNew"><S.BtnMainNewLink href="#">Создать новую задачу</S.BtnMainNewLink></S.BtnMainNew>            
+						<S.User href="#" 
+						onClick = {handleClick}>Ivan Ivanov</S.User>
 						<div className="header__pop-user-set pop-user-set" id="user-set-target">
 							<p className="pop-user-set__name">Ivan Ivanov</p>
 							<p className="pop-user-set__mail">ivan.ivanov@gmail.com</p>
@@ -35,10 +37,10 @@ const Header = ({onCardAdd}) => {
 							</div>
 							<button type="button" className="_hover03"><a href="#popExit">Выйти</a></button>
 						</div>
-					</nav>					
-				</div>
-			</div>			
-		</header>
+					</S.Nav>					
+				</S.Block>
+			</Container>			
+		</S.Header>
      );
 }
  

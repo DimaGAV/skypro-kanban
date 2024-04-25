@@ -1,66 +1,18 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
-*:before,
-*:after {
-  box-sizing: border-box;
-}
-
-a,
-a:visited {
-  text-decoration: none;
-  cursor: pointer;
-}
-
-button,
-._btn {
-  cursor: pointer;
-  outline: none;
-}
-
-ul li {
-  list-style: none;
-}
-
-@keyframes card-animation {
-  0% {
-    height: 0;
-    opacity: 0;
-  }
-  100% {
-    height: auto;
-    opacity: 1;
-  }
-}
-html,
-body {
-  width: 100%;
-  height: 100%;
-  font-family: "Roboto", Arial, Helvetica, sans-serif;
-  color: #000000;
-}
-
-.wrapper {
+/* .wrapper {
   max-width: 100%;
   width: 100vw;
   min-height: 100vh;
   overflow: hidden;
   background-color: #F1F1F1;
-}
+} */
 
-.container {
+/* .container {
   max-width: 1260px;
   width: 100%;
   margin: 0 auto;
   padding: 0 30px;
-}
-
-._hover01:hover {
-  background-color: #33399b;
-}
+} */
 
 ._hover02:hover, .header__user:hover {
   color: #33399b;
@@ -83,26 +35,6 @@ body {
 .pop-new-card:target,
 .pop-browse:target {
   display: block;
-}
-
-._orange {
-  background-color: #FFE4C2;
-  color: #FF6D00;
-}
-
-._green {
-  background-color: #B4FDD1;
-  color: #06B16E;
-}
-
-._purple {
-  background-color: #E9D4FF;
-  color: #9A48F1;
-}
-
-._gray {
-  background: #94A6BE;
-  color: #FFFFFF;
 }
 
 ._active-category {
@@ -713,7 +645,7 @@ body {
   display: none;
 }
 
-.header {
+/* .header {
   width: 100%;
   margin: 0 auto;
   background-color: #FFFFFF;
@@ -728,32 +660,17 @@ body {
   top: 0;
   left: 0;
   padding: 0 10px;
-}
+} */
 .header__logo img {
   width: 85px;
 }
-.header__nav {
+/* .header__nav {
   max-width: 290px;
   padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-.header__btn-main-new {
-  width: 178px;
-  height: 30px;
-  border-radius: 4px;
-  background-color: #565EEF;
-  color: #FFFFFF;
-  border: none;
-  font-size: 14px;
-  line-height: 1;
-  font-weight: 500;
-  margin-right: 20px;
-}
-.header__btn-main-new a {
-  color: #FFFFFF;
-}
+} */
 .header__user {
   height: 20px;
   display: flex;
@@ -823,7 +740,7 @@ body {
   text-transform: uppercase;
 }
 
-.cards {
+/* .cards {
   width: 100%;
   display: block;
   position: relative;
@@ -844,7 +761,7 @@ body {
   align-items: flex-start;
   justify-content: stretch;
   padding: 15px 13px 19px;
-}
+} */
 
 .card__group {
   width: 100%;

@@ -6,6 +6,8 @@ import PopBrowse from './components/Popups/PopBrowse/PopBrowse'
 import PopNewCard from './components/Popups/PopNewCard/PopNewCard'
 import PopUser from './components/Popups/PopUser/PopUser'
 import { cardList, statusList } from './data'
+import { GlobalStyle } from './components/Global/Global.styled'
+import { Wrapper } from './components/Wrapper/Wrapper.styled'
 
 
 
@@ -29,14 +31,17 @@ function App() {
   }, [])
 
   return (
-    <div className="wrapper">
+    <>
+    <GlobalStyle />
+    <Wrapper>
       <PopUser />
       <PopNewCard />
       <PopBrowse />
       <Header onCardAdd={onCardAdd}/>
       
       {isLoading ? <p>Данные загружаются...</p> : <Main cards={cards}/>}
-		</div>
+		</Wrapper>
+    </>
   )
 }
 

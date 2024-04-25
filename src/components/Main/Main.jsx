@@ -1,11 +1,12 @@
 import { statusList } from "../../data";
 import Column from "../Column/Column";
+import { Container } from "../Container/Container.styled";
 
 
 const Main = ({cards}) => {
     return (
     <main className="main">
-    <div className="container">
+    <Container>
         <div className="main__block">
             <div className="main__content">
              {statusList.map((status) => (
@@ -17,7 +18,7 @@ const Main = ({cards}) => {
              ))}
             </div>
         </div>
-    </div>
+    </Container>
 </main> );
 }
  
