@@ -65,6 +65,10 @@ export const Date = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
+
+  & svg {
+    width: 13px;
+  }
 `;
 
 export const DateP = styled(Date)`

@@ -18,12 +18,12 @@ const Header = ({onCardAdd}) => {
         <S.Header>
 			<Container>
 				<S.Block>
-					<div>
-						<a href="" target="_self"><S.Logo src="/images/logo.png" alt="logo" /></a>
-					</div>
-					<div>
-						<a href="" target="_self"><S.Logo src="/images/logo_dark.png" alt="logo" /></a>
-					</div>
+					<S.Logo>
+						<a href="" target="_self"><img src="/images/logo.png" alt="logo" /></a>
+					</S.Logo>
+					<S.Logo>
+						<a href="" target="_self"><img src="/images/logo_dark.png" alt="logo" /></a>
+					</S.Logo>
 					<S.Nav>
 						<S.BtnMainNew onClick = {onCardAdd} id="btnMainNew"><S.BtnMainNewLink href="#">Создать новую задачу</S.BtnMainNewLink></S.BtnMainNew>            
 						<S.User href="#" 
