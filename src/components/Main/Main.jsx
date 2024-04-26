@@ -1,14 +1,14 @@
 import { statusList } from "../../data";
 import Column from "../Column/Column";
 import { Container } from "../Container/Container.styled";
-
+import * as S from "../Main/Main.styled";
 
 const Main = ({cards}) => {
     return (
-    <main className="main">
+    <S.Main>
     <Container>
-        <div className="main__block">
-            <div className="main__content">
+        <S.Block>
+            <S.Content>
              {statusList.map((status) => (
               <Column
                key={status}
@@ -16,10 +16,10 @@ const Main = ({cards}) => {
                cardList={cards.filter((card) => card.status === status)}
               />
              ))}
-            </div>
-        </div>
+            </S.Content>
+        </S.Block>
     </Container>
-</main> );
+</S.Main> );
 }
  
 export default Main;

@@ -1,5 +1,5 @@
 import { getTopicColor } from "../../data";
-import * as T from "./CardTheme.styled";
+import * as T from "./Card.styled";
 import * as S from "./Cards.styled";
 
 const Card = ({topic, title, date}) => {
@@ -12,18 +12,18 @@ const Card = ({topic, title, date}) => {
             <T.TopicText>{topic}</T.TopicText>
         </T.Topic>
             <a href="#popBrowse" target="_self">
-                <div className="card__btn">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
+                <T.Btn>
+                    <T.BtnDiv></T.BtnDiv>
+                    <T.BtnDiv></T.BtnDiv>
+                    <T.BtnDiv></T.BtnDiv>
+                </T.Btn>
             </a>
         </T.Group>
-        <div className="card__content">
+        <T.Content>
             <a href="" target="_blank">
                 <T.Title>{title}</T.Title>
             </a>
-            <div className="card__date">
+            <T.Date>
                 <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13" fill="none">
                     <g clipPath="url(#clip0_1_415)">
                         <path d="M10.5625 2.03125H2.4375C1.7644 2.03125 1.21875 2.5769 1.21875 3.25V10.5625C1.21875 11.2356 1.7644 11.7812 2.4375 11.7812H10.5625C11.2356 11.7812 11.7812 11.2356 11.7812 10.5625V3.25C11.7812 2.5769 11.2356 2.03125 10.5625 2.03125Z" stroke="#94A6BE" strokeWidth="0.8" strokeLinejoin="round" />
@@ -35,9 +35,9 @@ const Card = ({topic, title, date}) => {
                         </clipPath>
                     </defs>
                 </svg>
-                <p>{date}</p>
-            </div>
-        </div>
+                <T.DateP>{date}</T.DateP>
+            </T.Date>
+        </T.Content>
     </S.Card>
 </S.Item> );
 }
