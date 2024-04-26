@@ -18,7 +18,7 @@ export const Block = styled.div`
   padding: 0 10px;
 `;
 
-export const Logo = styled.div`
+export const Logo = styled.img`
 width: 85px;
 `;
 

@@ -688,14 +688,6 @@
   display: none;
 }
 
-._dark {
-  display: none;
-}
-
-img {
-  width: 85px;
-}
-
 .header__pop-user-set {
   display: none;
   position: absolute;
@@ -710,19 +702,6 @@ img {
   padding: 34px;
   text-align: center;
   z-index: 2;
-}
-
-.column__title {
-  padding: 0 10px;
-  margin: 15px 0;
-}
-
-.column__title p {
-  color: #94A6BE;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1;
-  text-transform: uppercase;
 }
 
 @media screen and (max-width: 1200px) {
