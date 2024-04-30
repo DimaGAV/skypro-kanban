@@ -8,7 +8,7 @@ import Exit from "./pages/Exit/Exit";
 import NotFound from "./pages/NotFound/NotFound";
 import Register from "./pages/Register/Register";
 
-const AppRoutes = {
+export const AppRoutes = {
   MAIN: "/",
   CARD: "/card",
   NOT_FOUND: "*",
@@ -18,7 +18,7 @@ const AppRoutes = {
 };
 
 export default function App() {
-  const isAuth = true;
+  const isAuth = false;
 
   return (
     <Routes>
