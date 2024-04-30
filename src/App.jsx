@@ -10,7 +10,7 @@ import Register from "./pages/Register/Register";
 
 export const AppRoutes = {
   MAIN: "/",
-  CARD: "/card",
+  CARD: "/card/:id",
   NOT_FOUND: "*",
   EXIT: "/exit",
   LOGIN: "/login",
