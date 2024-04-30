@@ -1,6 +1,6 @@
 import { statusList } from "../../data";
+import { Container } from "../../styled/common";
 import Column from "../Column/Column";
-import { Container } from "../Container/Container.styled";
 import * as S from "../Main/Main.styled";
 
 const Main = ({cards}) => {
