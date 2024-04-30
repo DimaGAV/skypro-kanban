@@ -8,20 +8,29 @@ import Exit from "./pages/Exit/Exit";
 import NotFound from "./pages/NotFound/NotFound";
 import Register from "./pages/Register/Register";
 
+const AppRoutes = {
+  MAIN: "/",
+  CARD: "/card",
+  NOT_FOUND: "*",
+  EXIT: "/exit",
+  LOGIN: "/login",
+  REGISTER: "/register",
+};
+
 export default function App() {
   const isAuth = true;
 
   return (
     <Routes>
       <Route element={<PrivateRoute isAuth={isAuth} />}>
-        <Route path={"/"} element={<MainPage />} />
-        <Route path={"/card"} element={<CardPage />} />
-        <Route path={"/exit"} element={<Exit />} />
+        <Route path={AppRoutes.MAIN} element={<MainPage />} />
+        <Route path={AppRoutes.CARD} element={<CardPage />} />
+        <Route path={AppRoutes.EXIT} element={<Exit />} />
       </Route>
 
-      <Route path={"/login"} element={<Login />} />
-      <Route path={"/register"} element={<Register />} />
-      <Route path={"*"} element={<NotFound />} />
+      <Route path={AppRoutes.LOGIN} element={<Login />} />
+      <Route path={AppRoutes.REGISTER} element={<Register />} />
+      <Route path={AppRoutes.NOT_FOUND} element={<NotFound />} />
     </Routes>
   );
 }
