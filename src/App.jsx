@@ -7,7 +7,7 @@ import PopNewCard from './components/Popups/PopNewCard/PopNewCard'
 import PopUser from './components/Popups/PopUser/PopUser'
 import { cardList, statusList } from './data'
 import { GlobalStyle } from './components/Global/Global.styled'
-import { Wrapper } from './components/Wrapper/Wrapper.styled'
+import { Wrapper } from './styled/common'
 
 
 
