@@ -9,7 +9,6 @@ max-width: 100%;
   background-color: #F1F1F1;
 `;
 
-
 export const Container = styled.div`
   max-width: 1260px;
   width: 100%;
