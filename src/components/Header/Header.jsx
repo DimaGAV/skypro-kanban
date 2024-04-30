@@ -2,6 +2,7 @@ import { useState } from "react";
 import * as S from "./Header.styled";
 import { Container } from "../../styled/common";
 
+
 const Header = ({ onCardAdd }) => {
   const [userWindow, setWindow] = useState(true);
   function handleClick() {
