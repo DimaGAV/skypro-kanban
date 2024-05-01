@@ -62,3 +62,7 @@ export const FormFooter = styled.div`
   font-weight: 400;
   text-align: center;
 `;
+
+export const FooterText = styled.p`
+  margin: 0;
+`;

@@ -5,6 +5,11 @@ import * as S from "../../components/Form/Form";
 
 
 export default function Register() {
+
+  const linkStyle = {
+    color: 'rgba(148, 166, 190, 0.4)'
+  }
+
     return (
     <S.Form>
       <S.FormContainer>
@@ -18,7 +23,7 @@ export default function Register() {
           <S.FormButton /* onClick = {} */>Зарегистрироваться</S.FormButton>
         </Link>
         <S.FormFooter>
-          Уже есть аккаунт? <Link to={AppRoutes.LOGIN}>Войдите здесь</Link>
+          Уже есть аккаунт? <Link to={AppRoutes.LOGIN} style={linkStyle}>Войдите здесь</Link>
         </S.FormFooter>
       </S.FormContainer>
     </S.Form>

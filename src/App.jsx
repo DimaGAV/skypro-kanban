@@ -10,7 +10,7 @@ import { useState } from "react";
 
 export const AppRoutes = {
   MAIN: "/",
-  CARD: "/card/:id",
+  CARD: "/card",
   NOT_FOUND: "*",
   EXIT: "/exit",
   LOGIN: "/login",
