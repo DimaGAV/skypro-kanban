@@ -6,6 +6,7 @@ import Login from "./pages/Login/Login";
 import Exit from "./pages/Exit/Exit";
 import NotFound from "./pages/NotFound/NotFound";
 import Register from "./pages/Register/Register";
+import { useState } from "react";
 
 export const AppRoutes = {
   MAIN: "/",
@@ -16,9 +17,9 @@ export const AppRoutes = {
   REGISTER: "/register",
 };
 
+export let isAuth;
 export default function App() {
-  const isAuth = false;
-
+  
   return (
     <Routes>
       <Route element={<PrivateRoute isAuth={isAuth} />}>

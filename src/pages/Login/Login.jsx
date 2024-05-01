@@ -1,26 +1,28 @@
 import { Link } from "react-router-dom";
 import { AppRoutes } from "../../App";
+import * as S from "../../components/Form/Form";
+// import { isAuth } from "../../App";
 
 export default function Login() {
   return (
-    <form>
-      <h1>Вход</h1>
-      {/* Если пользователь уже авторизован, 
+    <S.Form>
+      <S.FormContainer>
+        <S.FormHeader>Вход</S.FormHeader>
+        {/* Если пользователь уже авторизован, 
       то будет переход на главную. 
       
       В противном случае переход не произойдет */}
-      <div>
-        <input type="mail" />
-        <input type="password" />
-        <div></div>
+        <S.FormInput type="mail" placeholder="Эл. почта" />
+        <S.FormInput type="password" placeholder="Пароль" />
+
         <Link to={AppRoutes.MAIN}>
-          <button>Войти</button>
+          <S.FormButton /* onClick = {} */>Войти</S.FormButton>
         </Link>
-      </div>
-      <div>
-        <p>Нужно зарегестрироваться?</p>
-        <Link to={AppRoutes.REGISTER}>Регистрируйтесь здесь</Link>
-      </div>
-    </form>
+        <S.FormFooter>
+          <p>Нужно зарегестрироваться?</p>
+          <Link to={AppRoutes.REGISTER}>Регистрируйтесь здесь</Link>
+        </S.FormFooter>
+      </S.FormContainer>
+    </S.Form>
   );
 }
