@@ -3,7 +3,7 @@ import { Container } from "../../styled/common";
 import Column from "../Column/Column";
 import * as S from "../Main/Main.styled";
 
-const Main = ({ cards }) => {
+const Main = ({ cards }) => { 
   return (
     <S.Main>
       <Container>
