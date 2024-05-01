@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { AppRoutes } from "../../App";
 import * as S from "../../components/Form/Form";
-// import { isAuth } from "../../App";
+
 
 export default function Login() {
   return (
@@ -16,7 +16,7 @@ export default function Login() {
         <S.FormInput type="password" placeholder="Пароль" />
 
         <Link to={AppRoutes.MAIN}>
-          <S.FormButton /* onClick = {} */>Войти</S.FormButton>
+          <S.FormButton>Войти</S.FormButton>
         </Link>
         <S.FormFooter>
           <p>Нужно зарегестрироваться?</p>

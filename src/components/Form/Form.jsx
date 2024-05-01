@@ -55,7 +55,7 @@ export const FormButton = styled.button`
   }
 `;
 
-export const FormFooter = styled.p`
+export const FormFooter = styled.div`
   color: rgba(148, 166, 190, 0.4);
   font-family: Roboto;
   font-size: 14px;
