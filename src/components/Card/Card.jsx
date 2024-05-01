@@ -7,8 +7,8 @@ import { AppRoutes } from "../../App";
 const Card = ({topic, title, date}) => {
     const topicColor = getTopicColor(topic)
     return ( 
-<S.Item >
-    <S.Card onClick={<Link to={AppRoutes.CARD}></Link>}>
+<S.Item onClick={<Link to={AppRoutes.CARD}></Link>}>
+    <S.Card>
         <T.Group>
         <T.Topic $topicColor={topicColor}>
             <T.TopicText>{topic}</T.TopicText>
