@@ -1,14 +1,6 @@
 import styled from "styled-components";
 import { breakpoints } from "../lib/breakpoints";
 
-export const Wrapper = styled.div`
-max-width: 100%;
-  width: 100vw;
-  min-height: 100vh;
-  overflow: hidden;
-  background-color: #F1F1F1;
-`;
-
 export const Container = styled.div`
   max-width: 1260px;
   width: 100%;
@@ -19,4 +11,12 @@ export const Container = styled.div`
     width: 100%;
     padding: 0 16px;
   }
+`;
+
+export const Wrapper = styled.div`
+max-width: 100%;
+  width: 100vw;
+  min-height: 100vh;
+  overflow: hidden;
+  background-color: #F1F1F1;
 `;
