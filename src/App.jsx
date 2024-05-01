@@ -6,6 +6,7 @@ import Login from "./pages/Login/Login";
 import Exit from "./pages/Exit/Exit";
 import NotFound from "./pages/NotFound/NotFound";
 import Register from "./pages/Register/Register";
+import { useState } from "react";
 
 export const AppRoutes = {
   MAIN: "/",
@@ -17,7 +18,7 @@ export const AppRoutes = {
 };
 
 export default function App() {
-  const isAuth = false;
+  const [isAuth, setIsAuth] = useState(false);
 
   return (
     <Routes>
@@ -27,7 +28,7 @@ export default function App() {
         <Route path={AppRoutes.EXIT} element={<Exit />} />
       </Route>
 
-      <Route path={AppRoutes.LOGIN} element={<Login />} />
+    <Route path={AppRoutes.LOGIN} element={<Login setIsAuth={setIsAuth}/>} />
       <Route path={AppRoutes.REGISTER} element={<Register />} />
       <Route path={AppRoutes.NOT_FOUND} element={<NotFound />} />
     </Routes>

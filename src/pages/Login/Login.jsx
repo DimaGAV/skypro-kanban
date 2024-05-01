@@ -3,7 +3,12 @@ import { AppRoutes } from "../../App";
 import * as S from "../../components/Form/Form";
 
 
-export default function Login() {
+export default function Login({setIsAuth}) {
+
+  const handleLogin = () => {
+    setIsAuth(true)
+  }
+
   return (
     <S.Form>
       <S.FormContainer>
@@ -16,7 +21,7 @@ export default function Login() {
         <S.FormInput type="password" placeholder="Пароль" />
 
         <Link to={AppRoutes.MAIN}>
-          <S.FormButton>Войти</S.FormButton>
+          <S.FormButton onClick = {handleLogin}>Войти</S.FormButton>
         </Link>
         <S.FormFooter>
           <p>Нужно зарегестрироваться?</p>
