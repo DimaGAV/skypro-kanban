@@ -17,7 +17,7 @@ export const AppRoutes = {
 };
 
 export default function App() {
-  const isAuth = true;
+  const isAuth = false;
 
   return (
     <Routes>
