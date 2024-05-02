@@ -1,14 +1,14 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { getTopicColor } from "../../data";
 import * as T from "./Card.styled";
 import * as S from "./Cards.styled";
-import { AppRoutes } from "../../App";
+// import { AppRoutes } from  "../../App";
 
 const Card = ({topic, title, date}) => {
     const topicColor = getTopicColor(topic)
     return ( 
 <S.Item >
-    <S.Card onClick={<Link to={AppRoutes.CARD}></Link>}>
+    <S.Card /* onClick={<Link to={AppRoutes.CARD}></Link>} */>
         <T.Group>
         <T.Topic $topicColor={topicColor}>
             <T.TopicText>{topic}</T.TopicText>
