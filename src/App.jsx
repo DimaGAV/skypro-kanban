@@ -3,16 +3,17 @@ import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import MainPage from "./pages/MainPage/MainPage";
 import CardPage from "./pages/CardPage/CardPage";
 import Login from "./pages/Login/Login";
-import Exit from "./pages/Exit/Exit";
+// import Exit from "./pages/Exit/Exit";
 import NotFound from "./pages/NotFound/NotFound";
 import Register from "./pages/Register/Register";
 import { useState } from "react";
+import PopUser from "./components/Popups/PopUser/PopUser";
 
 export const AppRoutes = {
   MAIN: "/",
   CARD: "/card",
   NOT_FOUND: "*",
-  EXIT: "/exit",
+  USER_EXIT: "/exit",
   LOGIN: "/login",
   REGISTER: "/register",
 };
@@ -25,7 +26,7 @@ export default function App() {
       <Route element={<PrivateRoute isAuth={isAuth} />}>
         <Route path={AppRoutes.MAIN} element={<MainPage />}>
         <Route path={AppRoutes.CARD + "/:id"} element={<CardPage />} />
-        <Route path={AppRoutes.EXIT} element={<Exit />} />
+        <Route path={AppRoutes.USER_EXIT} element={<PopUser setIsAuth={setIsAuth}/>} />
         </Route>
       </Route>
 

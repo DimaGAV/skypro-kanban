@@ -1,8 +1,12 @@
-export default function Exit() {
-    return (
-      <div>
-        <h1>Выйти</h1>
-        {/* <Link to="/about">О нас</Link> */}
-      </div>
-    );
+/* import { useNavigate } from "react-router-dom";
+import PopUser from "../../components/Popups/PopUser/PopUser";
+import { AppRoutes } from "../../App";
+
+export default function Exit({setIsAuth}) {
+  
+  const navigate = useNavigate();
+   const handleLogOut = () => {
+    setIsAuth(false);
+    navigate(AppRoutes.LOGIN)
   }
+  return <PopUser/>} */

@@ -3,7 +3,6 @@ import { getTopicColor } from "../../data";
 import * as T from "./Card.styled";
 import * as S from "./Cards.styled";
 import { AppRoutes } from "../../App";
-// import { AppRoutes } from  "../../App";
 
 const Card = ({id, topic, title, date}) => {
     const topicColor = getTopicColor(topic)

@@ -2,6 +2,8 @@
 import { useState } from "react";
 import * as S from "./Header.styled";
 import { Container } from "../../styled/common";
+import { Link } from "react-router-dom";
+import { AppRoutes } from "../../App";
 
 
 const Header = ({onCardAdd}) => {
@@ -37,7 +39,9 @@ const Header = ({onCardAdd}) => {
 								<p>Темная тема</p>
 								<input type="checkbox" className="checkbox" name="checkbox" />
 							</div>
-							<button type="button" className="_hover03"><a href="#popExit">Выйти</a></button>
+							<Link to={AppRoutes.USER_EXIT}>
+							<button type="button" className="_hover03">Выйти</button>
+							</Link>
 						</div>
 					</S.Nav>					
 				</S.Block>
