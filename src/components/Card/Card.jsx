@@ -1,14 +1,15 @@
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { getTopicColor } from "../../data";
 import * as T from "./Card.styled";
 import * as S from "./Cards.styled";
+import { AppRoutes } from "../../App";
 // import { AppRoutes } from  "../../App";
 
-const Card = ({topic, title, date}) => {
+const Card = ({id, topic, title, date}) => {
     const topicColor = getTopicColor(topic)
     return ( 
-<S.Item >
-    <S.Card /* onClick={<Link to={AppRoutes.CARD}></Link>} */>
+<S.Item>
+    <S.Card>
         <T.Group>
         <T.Topic $topicColor={topicColor}>
             <T.TopicText>{topic}</T.TopicText>
@@ -21,10 +22,12 @@ const Card = ({topic, title, date}) => {
                 </T.Btn>
             </a>
         </T.Group>
-        <T.Content>
-            <a href="" target="_blank">
+                <T.Content>
+      <Link to={AppRoutes.CARD + "/" + id}>
+            {/* <a href="" target="_blank"> */}
                 <T.Title>{title}</T.Title>
-            </a>
+      </Link>
+            {/* </a> */}
             <T.Date>
                 <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13" fill="none">
                     <g clipPath="url(#clip0_1_415)">

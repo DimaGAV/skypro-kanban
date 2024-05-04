@@ -23,9 +23,10 @@ export default function App() {
   return (
     <Routes>
       <Route element={<PrivateRoute isAuth={isAuth} />}>
-        <Route path={AppRoutes.MAIN} element={<MainPage />} />
-        <Route path={AppRoutes.CARD} element={<CardPage />} />
+        <Route path={AppRoutes.MAIN} element={<MainPage />}>
+        <Route path={AppRoutes.CARD + "/:id"} element={<CardPage />} />
         <Route path={AppRoutes.EXIT} element={<Exit />} />
+        </Route>
       </Route>
 
     <Route path={AppRoutes.LOGIN} element={<Login setIsAuth={setIsAuth}/>} />

@@ -6,6 +6,7 @@ export default function Login({ setIsAuth }) {
   
   const handleLogin = () => {
     setIsAuth(true);
+    
   }
 
   const linkStyle = {
