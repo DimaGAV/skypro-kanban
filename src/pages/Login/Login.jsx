@@ -22,7 +22,7 @@ export default function Login({ setIsAuth }) {
         <S.FormInput type="password" placeholder="Пароль" />
 
         {/* <Link to={AppRoutes.MAIN}> */}
-          <S.FormButton onClick={handleLogin}>Войти</S.FormButton>
+          <S.FormButton type="button" onClick={handleLogin}>Войти</S.FormButton>
         {/* </Link> */}
         <S.FormFooter>
           <S.FooterText>Нужно зарегистрироваться?</S.FooterText>

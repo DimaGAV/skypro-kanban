@@ -2,11 +2,11 @@
 import { useState } from "react";
 import * as S from "./Header.styled";
 import { Container } from "../../styled/common";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { AppRoutes } from "../../App";
 
 
-const Header = ({onCardAdd}) => {
+const Header = ({onCardAdd }) => {
 	const [userWindow, setWindow] = useState(true)
 	function handleClick() {
 		setWindow(!userWindow)
@@ -18,6 +18,12 @@ const Header = ({onCardAdd}) => {
 			document.getElementById("user-set-target").style.display = "none"
 		}
 	}
+
+	const navigate = useNavigate();
+const handleExit =() => {
+navigate(AppRoutes.USER_EXIT)
+}
+
     return ( 
         <S.Header>
 			<Container>
@@ -39,9 +45,7 @@ const Header = ({onCardAdd}) => {
 								<p>Темная тема</p>
 								<input type="checkbox" className="checkbox" name="checkbox" />
 							</div>
-							<Link to={AppRoutes.USER_EXIT}>
-							<button type="button" className="_hover03">Выйти</button>
-							</Link>
+							<button onClick={handleExit} type="button" className="_hover03">Выйти</button>
 						</div>
 					</S.Nav>					
 				</S.Block>

@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { AppRoutes } from "../../../App";
 
 const PopUser = (setIsAuth) => {
@@ -6,6 +6,10 @@ const PopUser = (setIsAuth) => {
    const handleLogOut = () => {
     setIsAuth(false);
     navigate(AppRoutes.LOGIN)
+  }
+  const handleToMain = ()=>{
+    navigate(AppRoutes.MAIN)
+    document.getElementById("user-set-target").style.display = "none"
   }
     return ( <div className="pop-exit" id="popExit">
     <div className="pop-exit__container">
@@ -15,8 +19,8 @@ const PopUser = (setIsAuth) => {
             </div>
             <form className="pop-exit__form" id="formExit" action="#">
                 <div className="pop-exit__form-group">
-                    <button onClick={handleLogOut} className="pop-exit__exit-yes _hover01" id="exitYes">Да, выйти</button>
-                    <button className="pop-exit__exit-no _hover03" id="exitNo"><Link to={AppRoutes.MAIN}>Нет, остаться</Link> </button>
+                    <button onClick={handleLogOut} className="pop-exit__exit-yes _hover03" id="exitYes">Да, выйти</button>
+                    <button type="button" onClick={handleToMain} className="pop-exit__exit-no _hover03" id="exitNo">Нет, остаться</button>
                 </div>
             </form>
         </div>
