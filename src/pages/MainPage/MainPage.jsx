@@ -9,6 +9,7 @@ import { cardList, statusList } from '../../data'
 import { GlobalStyle } from '../../components/Global/Global.styled'
 import { Wrapper } from '../../styled/common'
 import { Outlet } from 'react-router-dom'
+import { getCadrs } from '../../api'
 
 function MainPage() {
   const [cards, setCards] = useState(cardList);
@@ -29,7 +30,14 @@ function MainPage() {
     setTimeout(() => setIsLoading(false), 2000)
   }, [])
 
-  return (
+ 
+useEffect(()=>{
+  getCadrs().then((cards) => {
+    setCards(cards.tasks)
+  })
+}, [])
+
+return (
     <>
     <GlobalStyle />
     <Wrapper>
