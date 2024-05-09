@@ -4,6 +4,7 @@ import * as S from "../../components/Form/Form";
 import { useState } from "react";
 import { postLogin } from "../../api";
 
+<<<<<<< HEAD
 
 /* function getUserFromLocalStorage(user) {
   try {
@@ -25,6 +26,27 @@ export default function Login({setIsAuth}) {
   
   const linkStyle = {
     color: 'rgba(148, 166, 190, 0.4)'
+=======
+export default function Login({setIsAuth}) {
+  
+  const linkStyle = {
+    color: 'rgba(148, 166, 190, 0.4)'
+  }
+ 
+  const navigate = useNavigate();
+  const handleLogin = async () => {
+   try {
+    const data = await postLogin(formData)
+    // .then(() => {navigate(AppRoutes.MAIN)})
+    console.log(data);
+    setIsAuth (true);
+
+    navigate(AppRoutes.MAIN)
+
+   } catch (error) {
+    console.error("Ошибка при входе", error);
+   }
+>>>>>>> f33db03ebd3823656ca4d5863985dbb3d4d04403
   }
  
   const navigate = useNavigate();
@@ -35,6 +57,7 @@ export default function Login({setIsAuth}) {
     console.log(data);
     setIsAuth (true);
 
+<<<<<<< HEAD
     navigate(AppRoutes.MAIN)
 
    } catch (error) {
@@ -42,6 +65,8 @@ export default function Login({setIsAuth}) {
     setAddLoginError("Введенные Вами данные не распознаны. Проверьте свой логин и пароль и повторите попытку входа.")
    }
   }
+=======
+>>>>>>> f33db03ebd3823656ca4d5863985dbb3d4d04403
  
   const [formData, setFormData] = useState({
     login: "",
@@ -77,7 +102,10 @@ export default function Login({setIsAuth}) {
         name="password"
         label="Пароль"
         placeholder="Пароль"/>
+<<<<<<< HEAD
           <p style={{color: "red"}}>{addLoginError}</p>
+=======
+>>>>>>> f33db03ebd3823656ca4d5863985dbb3d4d04403
           <S.FormButton type="button" onClick={handleLogin}>Войти</S.FormButton>
         <S.FormFooter>
           <S.FooterText>Нужно зарегистрироваться?</S.FooterText>
