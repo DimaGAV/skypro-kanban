@@ -4,24 +4,7 @@ import * as S from "../../components/Form/Form";
 import { useState } from "react";
 import { postLogin } from "../../api";
 
-
-/* function getUserFromLocalStorage(user) {
-  try {
-    return JSON.parse(window.localStorage.getItem("user"));
-  } catch (error) {
-    return null;
-  }
-}
-
-let user = getUserFromLocalStorage();
-
-const getToken = () => {
-  const token = user ? `Bearer ${user.token}` : undefined;
-  return token;
-}; */
-
 export default function Login({setIsAuth}) {
-  const [addLoginError, setAddLoginError] = useState(null)
   
   const linkStyle = {
     color: 'rgba(148, 166, 190, 0.4)'
@@ -78,6 +61,7 @@ export default function Login({setIsAuth}) {
         label="Пароль"
         placeholder="Пароль"/>
           <p style={{color: "red"}}>{addLoginError}</p>
+=======
           <S.FormButton type="button" onClick={handleLogin}>Войти</S.FormButton>
         <S.FormFooter>
           <S.FooterText>Нужно зарегистрироваться?</S.FooterText>

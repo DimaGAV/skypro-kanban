@@ -26,8 +26,13 @@ export async function postLogin ( {login, password} ) {
         const response = await fetch ("https://wedev-api.sky.pro/api/user/login", {
     method: "POST",
     headers: {
+<<<<<<< HEAD
         Authorization: `Bearer ${token}`,
         },
+=======
+    Authorization: `Bearer ${token}`,
+    },
+>>>>>>> f33db03ebd3823656ca4d5863985dbb3d4d04403
     body: JSON.stringify ({
         login,
         password,
