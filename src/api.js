@@ -1,10 +1,5 @@
 const token = "bgc0b8awbwas6g5g5k5o5s5w606g37w3cc3bo3b83k39s3co3c83c03ck"
 
-// export let token;
-
-// export const setToken = (newToken) => {
-//   token = newToken;
-// };
 
 export async function getCadrs () {
     const response = await fetch ("https://wedev-api.sky.pro/api/kanban",
@@ -26,13 +21,8 @@ export async function postLogin ( {login, password} ) {
         const response = await fetch ("https://wedev-api.sky.pro/api/user/login", {
     method: "POST",
     headers: {
-<<<<<<< HEAD
         Authorization: `Bearer ${token}`,
         },
-=======
-    Authorization: `Bearer ${token}`,
-    },
->>>>>>> f33db03ebd3823656ca4d5863985dbb3d4d04403
     body: JSON.stringify ({
         login,
         password,
