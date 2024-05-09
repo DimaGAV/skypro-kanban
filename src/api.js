@@ -9,18 +9,32 @@ export async function getCadrs () {
     return data
 }
 
-export async function postLogin (login, password) {
-    const response = await fetch ("https://wedev-api.sky.pro/api/user/login",
-    {headers: {
+export async function postLogin ( {login, password} ) {
+    try {
+        const response = await fetch ("https://wedev-api.sky.pro/api/user/login", {
+    method: "POST",
+    headers: {
     Authorization: `Bearer ${token}`,
     },
-    method: "POST",
     body: JSON.stringify ({
         login,
         password,
     }),
     })
     
+if (!response.ok) {
+    throw new Error("Ошибка при входе")
+}
+
     const data = await response.json()
+    
     return data
+    // .then((user) => {
+        // setUser(user.user);
+    //   })
+    }
+    catch (error) {
+    throw new Error("Ошибка при входе")
+    }
+    
 }

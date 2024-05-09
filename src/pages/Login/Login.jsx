@@ -2,21 +2,30 @@ import { Link, useNavigate } from "react-router-dom";
 import { AppRoutes } from "../../App";
 import * as S from "../../components/Form/Form";
 import { useState } from "react";
-// import { postLogin } from "../../api";
+import { postLogin } from "../../api";
 
-export default function Login({ postLogin }) {
+export default function Login({setIsAuth}) {
   
-  const navigate = useNavigate();
-  const handleLogin = () => {
-    postLogin()
-    // setIsAuth(true);
-    navigate(AppRoutes.MAIN)
-  }
-
   const linkStyle = {
     color: 'rgba(148, 166, 190, 0.4)'
   }
+ 
+  const navigate = useNavigate();
+  const handleLogin = async () => {
+   try {
+    const data = await postLogin(formData)
+    // .then(() => {navigate(AppRoutes.MAIN)})
+    console.log(data);
+    setIsAuth (true);
 
+    navigate(AppRoutes.MAIN)
+
+   } catch (error) {
+    console.error("Ошибка при входе", error);
+   }
+  }
+
+ 
   const [formData, setFormData] = useState({
     login: "",
     password: "",
@@ -29,9 +38,8 @@ export default function Login({ postLogin }) {
       ...formData, // Копируем текущие данные из состояния
       [name]: value, // Обновляем нужное поле
     });
-    console.log(
-      `Submitted email: ${formData.login}, Last Name: ${formData.password}`
-    );
+    // console.log(`Submitted login: ${formData.login}, Last Name: ${formData.password}`
+    // );
   };
 
   return (
@@ -43,13 +51,15 @@ export default function Login({ postLogin }) {
         value={formData.login}
         onChange={handleInputChange}
         name="login"
-        label="Логин" />
+        label="Логин"
+        placeholder="Логин"/>
         <S.FormInput
         type="password"
         value={formData.password}
         onChange={handleInputChange}
         name="password"
-        label="Пароль" />
+        label="Пароль"
+        placeholder="Пароль"/>
           <S.FormButton type="button" onClick={handleLogin}>Войти</S.FormButton>
         <S.FormFooter>
           <S.FooterText>Нужно зарегистрироваться?</S.FooterText>
