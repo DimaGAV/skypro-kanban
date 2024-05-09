@@ -2,21 +2,47 @@ import { Link, useNavigate } from "react-router-dom";
 import { AppRoutes } from "../../App";
 import * as S from "../../components/Form/Form";
 import { useState } from "react";
-// import { postLogin } from "../../api";
+import { postLogin } from "../../api";
 
-export default function Login({ postLogin }) {
-  
-  const navigate = useNavigate();
-  const handleLogin = () => {
-    postLogin()
-    // setIsAuth(true);
-    navigate(AppRoutes.MAIN)
+
+/* function getUserFromLocalStorage(user) {
+  try {
+    return JSON.parse(window.localStorage.getItem("user"));
+  } catch (error) {
+    return null;
   }
+}
 
+let user = getUserFromLocalStorage();
+
+const getToken = () => {
+  const token = user ? `Bearer ${user.token}` : undefined;
+  return token;
+}; */
+
+export default function Login({setIsAuth}) {
+  const [addLoginError, setAddLoginError] = useState(null)
+  
   const linkStyle = {
     color: 'rgba(148, 166, 190, 0.4)'
   }
+ 
+  const navigate = useNavigate();
+  const handleLogin = async () => {
+   try {
+    const data = await postLogin(formData)
+    // .then(() => {setAuth (true)})
+    console.log(data);
+    setIsAuth (true);
 
+    navigate(AppRoutes.MAIN)
+
+   } catch (error) {
+    console.error("Ошибка при входе", error);
+    setAddLoginError("Введенные Вами данные не распознаны. Проверьте свой логин и пароль и повторите попытку входа.")
+   }
+  }
+ 
   const [formData, setFormData] = useState({
     login: "",
     password: "",
@@ -29,9 +55,8 @@ export default function Login({ postLogin }) {
       ...formData, // Копируем текущие данные из состояния
       [name]: value, // Обновляем нужное поле
     });
-    console.log(
-      `Submitted email: ${formData.login}, Last Name: ${formData.password}`
-    );
+    // console.log(`Submitted login: ${formData.login}, Last Name: ${formData.password}`
+    // );
   };
 
   return (
@@ -43,13 +68,16 @@ export default function Login({ postLogin }) {
         value={formData.login}
         onChange={handleInputChange}
         name="login"
-        label="Логин" />
+        label="Логин"
+        placeholder="Логин"/>
         <S.FormInput
         type="password"
         value={formData.password}
         onChange={handleInputChange}
         name="password"
-        label="Пароль" />
+        label="Пароль"
+        placeholder="Пароль"/>
+          <p style={{color: "red"}}>{addLoginError}</p>
           <S.FormButton type="button" onClick={handleLogin}>Войти</S.FormButton>
         <S.FormFooter>
           <S.FooterText>Нужно зарегистрироваться?</S.FooterText>
