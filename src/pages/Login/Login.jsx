@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AppRoutes } from "../../App";
 import * as S from "../../components/Form/Form";
 import { useState } from "react";
-import { postLogin } from "../../api";
+import { loginUser } from "../../api";
 
 
 export default function Login({setIsAuth}) {
@@ -14,7 +14,7 @@ export default function Login({setIsAuth}) {
 
   const handleLogin = async () => {
    try {
-    const data = await postLogin(formData)
+    const data = await loginUser(formData)
     console.log(data);
     setIsAuth (true)
 
