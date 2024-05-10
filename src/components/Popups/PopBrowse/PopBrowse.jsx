@@ -2,13 +2,13 @@ import { Link } from "react-router-dom";
 import Calendar from "../../Calendar/Calendar";
 import { AppRoutes } from "../../../App";
 
-const PopBrowse = ({_id}) => {
+const PopBrowse = ({id}) => {
     return ( <div className="pop-browse" id="popBrowse">
     <div className="pop-browse__container">
         <div className="pop-browse__block">
             <div className="pop-browse__content">
                 <div className="pop-browse__top-block">
-                    <h3 className="pop-browse__ttl">Карточка с ID: {_id}</h3>
+                    <h3 className="pop-browse__ttl">Карточка с ID: {id}</h3>
                     <div className="categories__theme theme-top _orange _active-category">
                         <p className="_orange">Web Design</p>
                     </div>
