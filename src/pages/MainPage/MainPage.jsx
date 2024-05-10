@@ -26,15 +26,17 @@ function MainPage() {
     setCards([...cards, newCard])
   }
 
-  useEffect(() => {
+ /*  useEffect(() => {
     setTimeout(() => setIsLoading(false), 2000)
-  }, [])
+  }, []) */
 
  
 useEffect(()=>{
   getCadrs().then((cards) => {
-    setCards(cards.tasks)
-  })
+   setCards(cards.tasks)
+   setIsLoading(false)
+    })
+    .catch(alert("Не удалось загрузить данные, попробуйте позже"))
 }, [])
 
 return (
