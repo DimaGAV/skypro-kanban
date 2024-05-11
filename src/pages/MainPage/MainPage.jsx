@@ -11,9 +11,10 @@ import { Wrapper } from '../../styled/common'
 import { Outlet } from 'react-router-dom'
 import { getCadrs } from '../../api'
 
-function MainPage() {
+function MainPage(user) {
   const [cards, setCards] = useState(cardList);
   const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState(null)
 
   function onCardAdd() {
     const newCard = {
@@ -26,18 +27,34 @@ function MainPage() {
     setCards([...cards, newCard])
   }
 
- /*  useEffect(() => {
-    setTimeout(() => setIsLoading(false), 2000)
-  }, []) */
-
- 
-useEffect(()=>{
-  getCadrs().then((cards) => {
+ /* useEffect(()=>{
+  getCadrs({
+    token:user.token
+  }).then((cards) => {
    setCards(cards.tasks)
    setIsLoading(false)
     })
     .catch(alert("Не удалось загрузить данные, попробуйте позже"))
-}, [])
+}, []) */
+useEffect(()=>{
+  const onCards = async () =>{
+   
+    try {
+    const res = await getCadrs({
+      token: user.token
+    })
+    setCards(res.tasks)
+    console.log(res);
+   setIsLoading(false)
+ 
+  } catch (error) 
+  {
+  console.error(error)
+  setError("Не удалось загрузить данные, попробуйте позже")
+ } 
+  }
+  onCards()
+}, [user.token])
 
 return (
     <>
@@ -47,7 +64,7 @@ return (
       {/* <PopNewCard /> */}
       {/* <PopBrowse /> */}
       <Header onCardAdd={onCardAdd}/>
-      
+      {error && <p>{error}</p>}
       {isLoading ? <p>Данные загружаются...</p> : <Main cards={cards}/>}
 		<Outlet/>
     </Wrapper>

@@ -5,23 +5,35 @@ import { useState } from "react";
 import { loginUser } from "../../api";
 
 
-export default function Login({setIsAuth}) {
+export default function Login({setIsAuth, setUser}) {
   const [addLoginError, setAddLoginError] = useState(null)
   const linkStyle = {
     color: 'rgba(148, 166, 190, 0.4)'}
 
   const navigate = useNavigate();
 
-  const handleLogin = async () => {
-   try {
+  const handleLogin = async (event) => {
+    event.preventDefault()
+    if (!formData.login || formData.login.trim().length === 0) {
+      setAddLoginError("Не введен логин!")
+      return
+    }
+   
+    if (!formData.password || formData.password.trim().length === 0) {
+      setAddLoginError("Не введен пароль!")
+      return
+    }
+   
+    try {
     const data = await loginUser(formData)
-    console.log(data);
     setIsAuth (true)
-
+    setUser(data.user)
+    console.log(data.user);
     navigate(AppRoutes.MAIN)
 
    } catch (error) {
-    console.error("Ошибка при входе", error);
+    console.error("Ошибка", error);
+    // setAddLoginError(error.message)
     setAddLoginError("Введенные Вами данные не распознаны. Проверьте свой логин и пароль и повторите попытку входа.")
    }
   }
@@ -31,19 +43,17 @@ export default function Login({setIsAuth}) {
     password: "",
   });
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target; // Извлекаем имя поля и его значение
+  const handleInputChange = (event) => {
+    const { name, value } = event.target; // Извлекаем имя поля и его значение
 
     setFormData({
       ...formData, // Копируем текущие данные из состояния
       [name]: value, // Обновляем нужное поле
     });
-    // console.log(`Submitted login: ${formData.login}, Last Name: ${formData.password}`
-    // );
   };
 
   return (
-    <S.Form>
+    <S.Form onSubmit={handleLogin}>
       <S.FormContainer>
         <S.FormHeader>Вход</S.FormHeader>
         <S.FormInput 
@@ -60,8 +70,8 @@ export default function Login({setIsAuth}) {
         name="password"
         label="Пароль"
         placeholder="Пароль"/>
-          <p style={{color: "red"}}>{addLoginError}</p>
-          <S.FormButton type="button" onClick={handleLogin}>Войти</S.FormButton>
+          {addLoginError && <p style={{color: "red"}}>{addLoginError}</p>}
+          <S.FormButton type="submit" /* onClick={handleLogin} */>Войти</S.FormButton>
         <S.FormFooter>
           <S.FooterText>Нужно зарегистрироваться?</S.FooterText>
           <Link to={AppRoutes.REGISTER} style={linkStyle}>Регистрируйтесь здесь</Link>
