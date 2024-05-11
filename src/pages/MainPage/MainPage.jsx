@@ -65,7 +65,7 @@ return (
       {/* <PopBrowse /> */}
       <Header onCardAdd={onCardAdd}/>
       {error && <p>{error}</p>}
-      {isLoading ? <p>Данные загружаются...</p> : <Main cards={cards}/>}
+      {!error && <Main cards={cards} isLoading={isLoading}/>}
 		<Outlet/>
     </Wrapper>
     </>
