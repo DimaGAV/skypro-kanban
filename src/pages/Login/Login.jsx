@@ -28,7 +28,7 @@ export default function Login({setIsAuth, setUser}) {
     const data = await loginUser(formData)
     setIsAuth (true)
     setUser(data.user)
-    console.log(data.user);
+    // console.log(data.user);
     navigate(AppRoutes.MAIN)
 
    } catch (error) {
@@ -71,7 +71,7 @@ export default function Login({setIsAuth, setUser}) {
         label="Пароль"
         placeholder="Пароль"/>
           {addLoginError && <p style={{color: "red"}}>{addLoginError}</p>}
-          <S.FormButton type="submit" /* onClick={handleLogin} */>Войти</S.FormButton>
+          <S.FormButton type="submit">Войти</S.FormButton>
         <S.FormFooter>
           <S.FooterText>Нужно зарегистрироваться?</S.FooterText>
           <Link to={AppRoutes.REGISTER} style={linkStyle}>Регистрируйтесь здесь</Link>

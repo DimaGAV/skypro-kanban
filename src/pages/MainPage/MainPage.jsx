@@ -11,7 +11,7 @@ import { Wrapper } from '../../styled/common'
 import { Outlet } from 'react-router-dom'
 import { getCadrs } from '../../api'
 
-function MainPage(user) {
+function MainPage({user}) {
   const [cards, setCards] = useState(cardList);
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -37,14 +37,14 @@ function MainPage(user) {
     .catch(alert("Не удалось загрузить данные, попробуйте позже"))
 }, []) */
 useEffect(()=>{
-  const onCards = async () =>{
+  const onCards = async () => {
    
     try {
     const res = await getCadrs({
       token: user.token
     })
     setCards(res.tasks)
-    console.log(res);
+    // console.log(res);
    setIsLoading(false)
  
   } catch (error) 
