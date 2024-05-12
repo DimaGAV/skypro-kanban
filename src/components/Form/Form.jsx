@@ -3,7 +3,8 @@ import styled from "styled-components";
 export const Form = styled.form`
   position: absolute;
   left: 536px;
-  top: 277px;
+  /* top: 277px; */
+  top: 7px;
   display: flex;
   padding: 50px 60px;
   box-sizing: border-box;

@@ -20,17 +20,25 @@ export const AppRoutes = {
 
 export default function App() {
   const [isAuth, setIsAuth] = useState(false);
+  const [user, setUser] = useState(null)
 
   return (
     <Routes>
+<<<<<<< HEAD
       <Route element={<PrivateRoute isAuth={isAuth} />}>
         <Route path={AppRoutes.MAIN} element={<MainPage />}>
         <Route path={AppRoutes.CARD + "/:id"} element={<CardPage />} />
         <Route path={AppRoutes.USER_EXIT} element={<PopUser setIsAuth={setIsAuth}/>} />
+=======
+      <Route element={<PrivateRoute isAuth={isAuth} user={user}/>}>
+        <Route path={AppRoutes.MAIN} element={<MainPage user={user}/>}>
+        <Route path={AppRoutes.CARD + "/:id"} element={<CardPage />} />
+        <Route path={AppRoutes.USER_EXIT} element={<PopUser setIsAuth={setIsAuth} setUser={setUser}/>} />
+>>>>>>> ce2cf867162af195a9be8716b53ef73177d6d421
         </Route>
       </Route>
 
-    <Route path={AppRoutes.LOGIN} element={<Login setIsAuth={setIsAuth}/>} />
+    <Route path={AppRoutes.LOGIN} element={<Login setIsAuth={setIsAuth} setUser={setUser}/>} />
       <Route path={AppRoutes.REGISTER} element={<Register />} />
       <Route path={AppRoutes.NOT_FOUND} element={<NotFound />} />
     </Routes>

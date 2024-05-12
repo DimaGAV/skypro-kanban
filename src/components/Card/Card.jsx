@@ -8,10 +8,14 @@ const Card = ({id, topic, title, date}) => {
     const topicColor = getTopicColor(topic)
     return ( 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <S.Item onClick={<Link to={AppRoutes.CARD}></Link>}>
 =======
 <S.Item>
 >>>>>>> 03746107f18ac44098b8ea4d65260f527857be59
+=======
+<S.Item>
+>>>>>>> ce2cf867162af195a9be8716b53ef73177d6d421
     <S.Card>
         <T.Group>
         <T.Topic $topicColor={topicColor}>

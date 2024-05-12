@@ -9,14 +9,19 @@ import { cardList, statusList } from '../../data'
 import { GlobalStyle } from '../../components/Global/Global.styled'
 import { Wrapper } from '../../styled/common'
 import { Outlet } from 'react-router-dom'
+<<<<<<< HEAD
+=======
+import { getCadrs } from '../../api'
+>>>>>>> ce2cf867162af195a9be8716b53ef73177d6d421
 
-function MainPage() {
+function MainPage({user}) {
   const [cards, setCards] = useState(cardList);
   const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState(null)
 
   function onCardAdd() {
     const newCard = {
-        id: cards.length + 1,
+        _id: cards.length + 1,
         topic: "Тема",
         title: "Название задачи",
         date: new Date().toLocaleDateString(),
@@ -25,11 +30,36 @@ function MainPage() {
     setCards([...cards, newCard])
   }
 
-  useEffect(() => {
-    setTimeout(() => setIsLoading(false), 2000)
-  }, [])
+ /* useEffect(()=>{
+  getCadrs({
+    token:user.token
+  }).then((cards) => {
+   setCards(cards.tasks)
+   setIsLoading(false)
+    })
+    .catch(alert("Не удалось загрузить данные, попробуйте позже"))
+}, []) */
+useEffect(()=>{
+  const onCards = async () => {
+   
+    try {
+    const res = await getCadrs({
+      token: user.token
+    })
+    setCards(res.tasks)
+    // console.log(res);
+   setIsLoading(false)
+ 
+  } catch (error) 
+  {
+  console.error(error)
+  setError("Не удалось загрузить данные, попробуйте позже")
+ } 
+  }
+  onCards()
+}, [user.token])
 
-  return (
+return (
     <>
     <GlobalStyle />
     <Wrapper>
@@ -37,8 +67,13 @@ function MainPage() {
       {/* <PopNewCard /> */}
       {/* <PopBrowse /> */}
       <Header onCardAdd={onCardAdd}/>
+<<<<<<< HEAD
       
       {isLoading ? <p>Данные загружаются...</p> : <Main cards={cards}/>}
+=======
+      {error && <p>{error}</p>}
+      {!error && <Main cards={cards} isLoading={isLoading}/>}
+>>>>>>> ce2cf867162af195a9be8716b53ef73177d6d421
 		<Outlet/>
     </Wrapper>
     </>
