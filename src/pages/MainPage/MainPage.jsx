@@ -5,14 +5,14 @@ import Main from "../../components/Main/Main";
 // import PopBrowse from '../../components/Popups/PopBrowse/PopBrowse'
 // import PopNewCard from '../../components/Popups/PopNewCard/PopNewCard'
 // import PopUser from '../../components/Popups/PopUser/PopUser'
-import { cardList, statusList } from "../../data";
+import { statusList } from "../../data";
 import { GlobalStyle } from "../../components/Global/Global.styled";
 import { Wrapper } from "../../styled/common";
 import { Outlet } from "react-router-dom";
 import { getCadrs } from "../../api";
 
 function MainPage({ user }) {
-  const [cards, setCards] = useState(cardList);
+  const [cards, setCards] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 

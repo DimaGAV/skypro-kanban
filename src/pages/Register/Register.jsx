@@ -5,28 +5,41 @@ import { useState } from "react";
 import { registerUser } from "../../api";
 
 export default function Register() {
-
-  const [addUserError, setAddUserError] = useState(null)
-
+  const [regError, setRegError] = useState(null);
   const linkStyle = {
-    color: 'rgba(148, 166, 190, 0.4)'
-  }
+    color: "rgba(148, 166, 190, 0.4)",
+  };
 
   const navigate = useNavigate();
 
-  const handleRegister = async () => {
-   try {
-    const data = await registerUser(formData)
-    console.log(data);
-    // setIsAuth (true)
+  const handleRegister = async (event) => {
+    event.preventDefault();
+    if (!formData.name || formData.name.trim().length === 0) {
+      setRegError("Не введено имя!");
+      return;
+    }
 
-    navigate(AppRoutes.MAIN)
+    if (!formData.login || formData.login.trim().length === 0) {
+      setRegError("Не введен логин!");
+      return;
+    }
 
-   } catch (error) {
-    console.error("Ошибка:", error);
-    setAddUserError("Введенные Вами данные не распознаны. Проверьте свой логин и пароль и повторите попытку входа.")
-   }
-  }
+    if (!formData.password || formData.password.trim().length === 0) {
+      setRegError("Не введен пароль!");
+      return;
+    }
+
+    try {
+      const response = await registerUser(formData);
+      console.log(response);
+      navigate(AppRoutes.LOGIN);
+    } catch (error) {
+      console.error("Ошибка", error);
+      setRegError(
+        "Введенные вами данные не корректны. Чтобы завершить регистрацию, введите данные корректно и повторите попытку."
+      );
+    }
+  };
 
   const [formData, setFormData] = useState({
     name: "",
@@ -34,50 +47,50 @@ export default function Register() {
     password: "",
   });
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target; // Извлекаем имя поля и его значение
+  const handleInputChange = (event) => {
+    const { name, value } = event.target; // Извлекаем имя поля и его значение
 
     setFormData({
       ...formData, // Копируем текущие данные из состояния
       [name]: value, // Обновляем нужное поле
     });
-    // console.log(`Submitted login: ${formData.login}, Last Name: ${formData.password}`
-    // );
   };
 
-    return (
-    <S.Form>
+  return (
+    <S.Form onSubmit={handleRegister}>
       <S.FormContainer>
         <S.FormHeader>Регистрация</S.FormHeader>
-        
-        <S.FormInput 
-        type="text"
-        value={formData.name}
-        name="name"
-        placeholder="Имя"
-        onChange={handleInputChange}
-        label="Имя"
-         />
         <S.FormInput
-        type="text"
-        value={formData.login}
-        name="login"
-        placeholder="Логин"
-        onChange={handleInputChange}
-        label="Логин" />
+          type="text"
+          value={formData.name}
+          name="name"
+          placeholder="Имя"
+          onChange={handleInputChange}
+          label="Имя"
+        />
         <S.FormInput
-        type="password"
-        value={formData.password}
-        name="password"
-        placeholder="Пароль"
-        onChange={handleInputChange}
-        label="Пароль" />
-
-        {/* <Link to={AppRoutes.MAIN}> */}
-          <S.FormButton onClick = {handleRegister}>Зарегистрироваться</S.FormButton>
-        {/* </Link> */}
+          type="text"
+          value={formData.login}
+          name="login"
+          placeholder="Логин"
+          onChange={handleInputChange}
+          label="Логин"
+        />
+        <S.FormInput
+          type="password"
+          value={formData.password}
+          name="password"
+          placeholder="Пароль"
+          onChange={handleInputChange}
+          label="Пароль"
+        />
+        {regError && <p style={{ color: "red" }}>{regError}</p>}
+        <S.FormButton type="submit">Зарегистрироваться</S.FormButton>
         <S.FormFooter>
-          Уже есть аккаунт? <Link to={AppRoutes.LOGIN} style={linkStyle}>Войдите здесь</Link>
+          Уже есть аккаунт?{" "}
+          <Link to={AppRoutes.LOGIN} style={linkStyle}>
+            Войдите здесь
+          </Link>
         </S.FormFooter>
       </S.FormContainer>
     </S.Form>

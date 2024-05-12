@@ -66,7 +66,7 @@ export default function Login({setUser}) {
         name="password"
         label="Пароль"
         placeholder="Пароль"/>
-          {addLoginError && <p style={{color: "red"}}>{addLoginError}</p>}
+        {addLoginError && <p style={{color: "red"}}>{addLoginError}</p>}
           <S.FormButton type="submit">Войти</S.FormButton>
         <S.FormFooter>
           <S.FooterText>Нужно зарегистрироваться?</S.FooterText>
