@@ -9,10 +9,7 @@ import { cardList, statusList } from '../../data'
 import { GlobalStyle } from '../../components/Global/Global.styled'
 import { Wrapper } from '../../styled/common'
 import { Outlet } from 'react-router-dom'
-<<<<<<< HEAD
-=======
 import { getCadrs } from '../../api'
->>>>>>> ce2cf867162af195a9be8716b53ef73177d6d421
 
 function MainPage({user}) {
   const [cards, setCards] = useState(cardList);
@@ -67,13 +64,8 @@ return (
       {/* <PopNewCard /> */}
       {/* <PopBrowse /> */}
       <Header onCardAdd={onCardAdd}/>
-<<<<<<< HEAD
-      
-      {isLoading ? <p>Данные загружаются...</p> : <Main cards={cards}/>}
-=======
       {error && <p>{error}</p>}
       {!error && <Main cards={cards} isLoading={isLoading}/>}
->>>>>>> ce2cf867162af195a9be8716b53ef73177d6d421
 		<Outlet/>
     </Wrapper>
     </>

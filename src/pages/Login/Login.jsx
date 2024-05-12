@@ -4,17 +4,6 @@ import * as S from "../../components/Form/Form";
 import { useState } from "react";
 import { loginUser } from "../../api";
 
-<<<<<<< HEAD
-export default function Login({ setIsAuth }) {
-  
-  const navigate = useNavigate();
-  const handleLogin = () => {
-    setIsAuth(true);
-    navigate(AppRoutes.MAIN)
-  }
-=======
->>>>>>> ce2cf867162af195a9be8716b53ef73177d6d421
-
 export default function Login({setIsAuth, setUser}) {
   const [addLoginError, setAddLoginError] = useState(null)
   const linkStyle = {
@@ -66,14 +55,6 @@ export default function Login({setIsAuth, setUser}) {
     <S.Form onSubmit={handleLogin}>
       <S.FormContainer>
         <S.FormHeader>Вход</S.FormHeader>
-<<<<<<< HEAD
-        <S.FormInput type="mail" placeholder="Эл. почта" />
-        <S.FormInput type="password" placeholder="Пароль" />
-
-        {/* <Link to={AppRoutes.MAIN}> */}
-          <S.FormButton type="button" onClick={handleLogin}>Войти</S.FormButton>
-        {/* </Link> */}
-=======
         <S.FormInput 
         type="text"
         value={formData.login}
@@ -90,7 +71,6 @@ export default function Login({setIsAuth, setUser}) {
         placeholder="Пароль"/>
           {addLoginError && <p style={{color: "red"}}>{addLoginError}</p>}
           <S.FormButton type="submit">Войти</S.FormButton>
->>>>>>> ce2cf867162af195a9be8716b53ef73177d6d421
         <S.FormFooter>
           <S.FooterText>Нужно зарегистрироваться?</S.FooterText>
           <Link to={AppRoutes.REGISTER} style={linkStyle}>Регистрируйтесь здесь</Link>
