@@ -4,7 +4,7 @@ import * as S from "../../components/Form/Form";
 import { useState } from "react";
 import { loginUser } from "../../api";
 
-export default function Login({setIsAuth, setUser}) {
+export default function Login({setUser}) {
   const [addLoginError, setAddLoginError] = useState(null)
   const linkStyle = {
     color: 'rgba(148, 166, 190, 0.4)'}
@@ -25,14 +25,11 @@ export default function Login({setIsAuth, setUser}) {
    
     try {
     const data = await loginUser(formData)
-    setIsAuth (true)
     setUser(data.user)
-    // console.log(data.user);
     navigate(AppRoutes.MAIN)
 
    } catch (error) {
     console.error("Ошибка", error);
-    // setAddLoginError(error.message)
     setAddLoginError("Введенные Вами данные не распознаны. Проверьте свой логин и пароль и повторите попытку входа.")
    }
   }
