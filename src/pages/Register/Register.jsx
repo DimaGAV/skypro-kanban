@@ -34,10 +34,7 @@ export default function Register() {
       console.log(response);
       navigate(AppRoutes.LOGIN);
     } catch (error) {
-      console.error("Ошибка", error);
-      setRegError(
-        "Введенные вами данные не корректны. Чтобы завершить регистрацию, введите данные корректно и повторите попытку."
-      );
+      setRegError(error.message);
     }
   };
 
@@ -66,7 +63,6 @@ export default function Register() {
           name="name"
           placeholder="Имя"
           onChange={handleInputChange}
-          label="Имя"
         />
         <S.FormInput
           type="text"
@@ -74,7 +70,6 @@ export default function Register() {
           name="login"
           placeholder="Логин"
           onChange={handleInputChange}
-          label="Логин"
         />
         <S.FormInput
           type="password"
@@ -82,7 +77,6 @@ export default function Register() {
           name="password"
           placeholder="Пароль"
           onChange={handleInputChange}
-          label="Пароль"
         />
         {regError && <p style={{ color: "red" }}>{regError}</p>}
         <S.FormButton type="submit">Зарегистрироваться</S.FormButton>

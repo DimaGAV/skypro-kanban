@@ -35,7 +35,7 @@ export default function App() {
 
       <Route
         path={AppRoutes.LOGIN}
-        element={<Login /* setIsAuth={setIsAuth} */ setUser={setUser} />}
+        element={<Login setUser={setUser} />}
       />
       <Route path={AppRoutes.REGISTER} element={<Register />} />
       <Route path={AppRoutes.NOT_FOUND} element={<NotFound />} />

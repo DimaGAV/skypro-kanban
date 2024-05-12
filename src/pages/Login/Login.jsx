@@ -30,7 +30,7 @@ export default function Login({setUser}) {
 
    } catch (error) {
     console.error("Ошибка", error);
-    setAddLoginError("Введенные Вами данные не распознаны. Проверьте свой логин и пароль и повторите попытку входа.")
+    setAddLoginError(error.message)
    }
   }
 
@@ -57,14 +57,12 @@ export default function Login({setUser}) {
         value={formData.login}
         onChange={handleInputChange}
         name="login"
-        label="Логин"
         placeholder="Логин"/>
         <S.FormInput
         type="password"
         value={formData.password}
         onChange={handleInputChange}
         name="password"
-        label="Пароль"
         placeholder="Пароль"/>
         {addLoginError && <p style={{color: "red"}}>{addLoginError}</p>}
           <S.FormButton type="submit">Войти</S.FormButton>
