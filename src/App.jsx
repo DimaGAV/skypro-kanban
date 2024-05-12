@@ -18,7 +18,6 @@ export const AppRoutes = {
 };
 
 export default function App() {
-  // const [isAuth, setIsAuth] = useState(false);
   const [user, setUser] = useState(null);
 
   return (
@@ -28,7 +27,7 @@ export default function App() {
           <Route path={AppRoutes.CARD + "/:id"} element={<CardPage />} />
           <Route
             path={AppRoutes.USER_EXIT}
-            element={<PopUser /* setIsAuth={setIsAuth} */ setUser={setUser} />}
+            element={<PopUser setUser={setUser} />}
           />
         </Route>
       </Route>

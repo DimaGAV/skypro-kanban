@@ -45,11 +45,11 @@ export default function Register() {
   });
 
   const handleInputChange = (event) => {
-    const { name, value } = event.target; // Извлекаем имя поля и его значение
+    const { name, value } = event.target;
 
     setFormData({
-      ...formData, // Копируем текущие данные из состояния
-      [name]: value, // Обновляем нужное поле
+      ...formData,
+      [name]: value,
     });
   };
 

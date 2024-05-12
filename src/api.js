@@ -23,7 +23,9 @@ export async function loginUser({ login, password }) {
   });
 
   if (!response.ok) {
-    throw new Error("Введенные Вами данные не распознаны. Проверьте свой логин и пароль и повторите попытку входа.");
+    throw new Error(
+      "Введенные Вами данные не распознаны. Проверьте свой логин и пароль и повторите попытку входа."
+    );
   }
 
   const data = await response.json();
