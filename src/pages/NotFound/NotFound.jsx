@@ -5,7 +5,7 @@ export default function NotFound() {
   return (
     <div>
       <h1>Страница не найдена! Ошибка 404</h1>
-      <Link to={AppRoutes.LOGIN}>Войти/Зарегистрироваться</Link>
+      <Link to={AppRoutes.MAIN}>Вернуться на главную</Link>
     </div>
   );
 }

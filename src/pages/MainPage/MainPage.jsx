@@ -13,6 +13,14 @@ function MainPage({ user }) {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const loadingErrorText = {
+    color: "red",
+    position: "absolute",
+    left: "50%",
+    top: "50%",
+    transform: "translate(-50%, -50%)",
+  };
+
   function onCardAdd() {
     const newCard = {
       _id: cards.length + 1,
@@ -45,7 +53,7 @@ function MainPage({ user }) {
       <GlobalStyle />
       <Wrapper>
         <Header onCardAdd={onCardAdd} />
-        {error && <p>{error}</p>}
+        {error && <p style={loadingErrorText}>{error}</p>}
         {!error && <Main cards={cards} isLoading={isLoading} />}
         <Outlet />
       </Wrapper>
