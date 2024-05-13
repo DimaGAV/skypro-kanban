@@ -13,19 +13,19 @@ const Card = ({ id, topic, title, date }) => {
           <T.Topic $topicColor={topicColor}>
             <T.TopicText>{topic}</T.TopicText>
           </T.Topic>
-          <a href="#popBrowse" target="_self">
+          {/* <a href="#popBrowse" target="_self"> */}
+          <Link to={AppRoutes.CARD + "/" + id}>
             <T.Btn>
               <T.BtnDiv></T.BtnDiv>
               <T.BtnDiv></T.BtnDiv>
               <T.BtnDiv></T.BtnDiv>
             </T.Btn>
-          </a>
+          </Link>
+          {/* </a> */}
         </T.Group>
         <T.Content>
-          <Link to={AppRoutes.CARD + "/" + id}>
             {/* <a href="" target="_blank"> */}
             <T.Title>{title}</T.Title>
-          </Link>
           {/* </a> */}
           <T.Date>
             <svg
