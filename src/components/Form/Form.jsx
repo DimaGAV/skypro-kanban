@@ -2,8 +2,9 @@ import styled from "styled-components";
 
 export const Form = styled.form`
   position: absolute;
-  left: 536px;
-  top: 277px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   padding: 50px 60px;
   box-sizing: border-box;

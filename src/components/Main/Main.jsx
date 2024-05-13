@@ -3,13 +3,15 @@ import { Container } from "../../styled/common";
 import Column from "../Column/Column";
 import * as S from "../Main/Main.styled";
 
-const Main = ({ cards }) => { 
+const Main = ({ cards, isLoading }) => { 
   return (
     <S.Main>
       <Container>
         <S.Block>
           <S.Content>
-            {statusList.map((status) => (
+            {isLoading && <p>Данные загружаются...</p>}
+            {!isLoading && 
+            statusList.map((status) => (
               <Column
                 key={status}
                 title={status}
