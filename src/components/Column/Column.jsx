@@ -11,7 +11,7 @@ const Column = ({title, cardList}) => {
      </R.Title>
        <Cards>
         {cardList.map((card) => (
-            <Card key={card.id} topic={card.topic} title={card.title} date={card.date} />
+            <Card id={card.id} key={card.id} topic={card.topic} title={card.title} date={card.date} />
          ))}
         
         </Cards>

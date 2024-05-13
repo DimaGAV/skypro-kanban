@@ -1,48 +1,38 @@
-import { useEffect, useState } from 'react'
-import './App.css'
-import Header from './components/Header/Header'
-import Main from './components/Main/Main'
-import PopBrowse from './components/Popups/PopBrowse/PopBrowse'
-import PopNewCard from './components/Popups/PopNewCard/PopNewCard'
-import PopUser from './components/Popups/PopUser/PopUser'
-import { cardList, statusList } from './data'
-import { GlobalStyle } from './components/Global/Global.styled'
-import { Wrapper } from './styled/common'
+import { Route, Routes } from "react-router-dom";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import MainPage from "./pages/MainPage/MainPage";
+import CardPage from "./pages/CardPage/CardPage";
+import Login from "./pages/Login/Login";
+// import Exit from "./pages/Exit/Exit";
+import NotFound from "./pages/NotFound/NotFound";
+import Register from "./pages/Register/Register";
+import { useState } from "react";
+import PopUser from "./components/Popups/PopUser/PopUser";
 
+export const AppRoutes = {
+  MAIN: "/",
+  CARD: "/card",
+  NOT_FOUND: "*",
+  USER_EXIT: "/exit",
+  LOGIN: "/login",
+  REGISTER: "/register",
+};
 
-
-function App() {
-  const [cards, setCards] = useState(cardList);
-  const [isLoading, setIsLoading] = useState(true)
-
-  function onCardAdd() {
-    const newCard = {
-        id: cards.length + 1,
-        topic: "Тема",
-        title: "Название задачи",
-        date: new Date().toLocaleDateString(),
-        status: statusList[0]
-    }
-    setCards([...cards, newCard])
-  }
-
-  useEffect(() => {
-    setTimeout(() => setIsLoading(false), 2000)
-  }, [])
+export default function App() {
+  const [isAuth, setIsAuth] = useState(false);
 
   return (
-    <>
-    <GlobalStyle />
-    <Wrapper>
-      <PopUser />
-      <PopNewCard />
-      <PopBrowse />
-      <Header onCardAdd={onCardAdd}/>
-      
-      {isLoading ? <p>Данные загружаются...</p> : <Main cards={cards}/>}
-		</Wrapper>
-    </>
-  )
-}
+    <Routes>
+      <Route element={<PrivateRoute isAuth={isAuth} />}>
+        <Route path={AppRoutes.MAIN} element={<MainPage />}>
+        <Route path={AppRoutes.CARD + "/:id"} element={<CardPage />} />
+        <Route path={AppRoutes.USER_EXIT} element={<PopUser setIsAuth={setIsAuth}/>} />
+        </Route>
+      </Route>
 
-export default App
+    <Route path={AppRoutes.LOGIN} element={<Login setIsAuth={setIsAuth}/>} />
+      <Route path={AppRoutes.REGISTER} element={<Register />} />
+      <Route path={AppRoutes.NOT_FOUND} element={<NotFound />} />
+    </Routes>
+  );
+}
