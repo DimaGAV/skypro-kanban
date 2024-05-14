@@ -10,7 +10,7 @@ const PopBrowse = ({ id }) => {
         <M.Block>
           <M.Content>
             <div className="pop-browse__top-block">
-              <h3 className="pop-browse__ttl">Карточка с ID: {id}</h3>
+              <M.Title>Карточка с ID: {id}</M.Title>
               <div className="categories__theme theme-top _orange _active-category">
                 <p className="_orange">Web Design</p>
               </div>
@@ -35,16 +35,10 @@ const PopBrowse = ({ id }) => {
                 </div>
               </div>
             </div>
-            <div className="pop-browse__wrap">
-              <form
-                className="pop-browse__form form-browse"
-                id="formBrowseCard"
-                action="#"
-              >
-                <div className="form-browse__block">
-                  <label htmlFor="textArea01" className="subttl">
-                    Описание задачи
-                  </label>
+            <M.Wrap>
+              <M.Form id="formBrowseCard" action="#">
+                <M.FormBlock>
+                  <M.Subttl htmlFor="textArea01">Описание задачи</M.Subttl>
                   <textarea
                     className="form-browse__area"
                     name="text"
@@ -52,13 +46,13 @@ const PopBrowse = ({ id }) => {
                     readOnly
                     placeholder="Введите описание задачи..."
                   ></textarea>
-                </div>
-              </form>
-              <div className="pop-new-card__calendar calendar">
-                <p className="calendar__ttl subttl">Даты</p>
+                </M.FormBlock>
+              </M.Form>
+              <M.CardCalendar>
+                <M.CalendarTtl>Даты</M.CalendarTtl>
                 <Calendar />
-              </div>
-            </div>
+              </M.CardCalendar>
+            </M.Wrap>
             <div className="theme-down__categories theme-down">
               <p className="categories__p subttl">Категория</p>
               <div className="categories__theme _orange _active-category">
