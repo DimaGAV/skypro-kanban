@@ -1,7 +1,7 @@
 import * as M from "../../../styled/modal";
 import Calendar from "../../Calendar/Calendar";
 
-const PopNewCard = () => {
+const PopNewCard = ({onCardAdd}) => {
   return (
     <M.CardMain id="popNewCard">
       <M.Container>
@@ -51,7 +51,7 @@ const PopNewCard = () => {
                 </div>
               </M.CategoriesThemes>
             </M.Categories>
-            <button className="form-new__create _hover01" id="btnCreate">
+            <button onClick = {onCardAdd} className="form-new__create _hover01" id="btnCreate">
               Создать задачу
             </button>
           </M.Content>

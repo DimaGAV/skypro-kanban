@@ -2,11 +2,11 @@
 import { useState } from "react";
 import * as S from "./Header.styled";
 import { Container } from "../../styled/common";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AppRoutes } from "../../App";
 
 
-const Header = ({onCardAdd }) => {
+const Header = (/* {onCardAdd} */) => {
 	const [userWindow, setWindow] = useState(true)
 	function handleClick() {
 		setWindow(!userWindow)
@@ -35,7 +35,9 @@ navigate(AppRoutes.USER_EXIT)
 						<a href="" target="_self"><img src="/images/logo_dark.png" alt="logo" /></a>
 					</S.Logo>
 					<S.Nav>
-						<S.BtnMainNew onClick = {onCardAdd} id="btnMainNew"><S.BtnMainNewLink href="#">Создать новую задачу</S.BtnMainNewLink></S.BtnMainNew>            
+						<S.BtnMainNew id="btnMainNew">
+							<Link to={AppRoutes.NEWCARD}>Создать новую задачу</Link>
+							</S.BtnMainNew>            
 						<S.User href="#" 
 						onClick = {handleClick}>Ivan Ivanov</S.User>
 						<div className="header__pop-user-set pop-user-set" id="user-set-target">
