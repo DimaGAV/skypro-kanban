@@ -58,7 +58,7 @@ function MainPage(/* { user } */) {
     <>
       <GlobalStyle />
       <Wrapper>
-        <Header user={user} />
+        <Header /* user={user}  *//>
         {error && <p style={loadingErrorText}>{error}</p>}
         {!error && <Main /* cards={cards}  */ isLoading={isLoading} />}
         <Outlet />

@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AppRoutes } from "../App";
 
@@ -16,10 +16,10 @@ export const UserProvider = ({ children }) => {
   let navigate = useNavigate();
   const [user, setUser] = useState(getUserFromLS);
 
-  function loginUser(newUser) {
+  function isLoginUser(newUser) {
     setUser(newUser);
-    localStorage.setItem("user", JSON.stringify(newUser));
-    navigate(AppRoutes.LOGIN);
+    // localStorage.setItem("user", JSON.stringify(newUser));
+    navigate(AppRoutes.MAIN);
   }
 
   function logoutUser() {
@@ -28,8 +28,16 @@ export const UserProvider = ({ children }) => {
     navigate(AppRoutes.LOGIN);
   }
 
+  useEffect(() => {
+    if (user) {
+      localStorage.setItem("user", JSON.stringify(user));
+    } else {
+      localStorage.removeItem("user");
+    }
+  }, [user]);
+
   return (
-    <UserContext.Provider value={{ user, loginUser, logoutUser }}>
+    <UserContext.Provider value={{ user, isLoginUser, logoutUser }}>
       {children}
     </UserContext.Provider>
   );

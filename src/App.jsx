@@ -8,7 +8,7 @@ import Register from "./pages/Register/Register";
 // import { useState } from "react";
 import PopUser from "./components/Popups/PopUser/PopUser";
 import PopNewCard from "./components/Popups/PopNewCard/PopNewCard";
-import { UserProvider } from "./context/user";
+import { TaskProvider } from "./context/tasks";
 
 export const AppRoutes = {
   MAIN: "/",
@@ -27,19 +27,12 @@ export default function App() {
     <Routes>
       <Route
         element={
-          <UserProvider>
+          <TaskProvider>
             <PrivateRoute /* user={user} */ />
-          </UserProvider>
+          </TaskProvider>
         }
       >
-        <Route
-          path={AppRoutes.MAIN}
-          element={
-            <UserProvider>
-              <MainPage /* user={user}  */ />
-            </UserProvider>
-          }
-        >
+        <Route path={AppRoutes.MAIN} element={<MainPage /* user={user} */ />}>
           <Route path={AppRoutes.CARD + "/:id"} element={<CardPage />} />
           <Route path={AppRoutes.NEWCARD} element={<PopNewCard />} />
           <Route
@@ -49,7 +42,7 @@ export default function App() {
         </Route>
       </Route>
 
-      <Route path={AppRoutes.LOGIN} element={<Login /* setUser={setUser} */ />} />
+      <Route path={AppRoutes.LOGIN} element={<Login />} />
       <Route path={AppRoutes.REGISTER} element={<Register />} />
       <Route path={AppRoutes.NOT_FOUND} element={<NotFound />} />
     </Routes>

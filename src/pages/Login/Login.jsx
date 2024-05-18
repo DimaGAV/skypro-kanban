@@ -3,8 +3,10 @@ import { AppRoutes } from "../../App";
 import * as S from "../../components/Form/Form";
 import { useState } from "react";
 import { loginUser } from "../../api";
+import { useUser } from "../../hooks/useUser";
 
-export default function Login({ setUser }) {
+export default function Login() {
+  const { isLoginUser } = useUser();
   const [addLoginError, setAddLoginError] = useState(null);
   const linkStyle = {
     color: "rgba(148, 166, 190, 0.4)",
@@ -26,7 +28,8 @@ export default function Login({ setUser }) {
 
     try {
       const data = await loginUser(formData);
-      setUser(data.user);
+      console.log("User logged in, navigating to main page...");
+      isLoginUser(data.user);
       navigate(AppRoutes.MAIN);
     } catch (error) {
       console.error("Ошибка", error);
