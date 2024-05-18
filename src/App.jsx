@@ -5,7 +5,6 @@ import CardPage from "./pages/CardPage/CardPage";
 import Login from "./pages/Login/Login";
 import NotFound from "./pages/NotFound/NotFound";
 import Register from "./pages/Register/Register";
-// import { useState } from "react";
 import PopUser from "./components/Popups/PopUser/PopUser";
 import PopNewCard from "./components/Popups/PopNewCard/PopNewCard";
 import { TaskProvider } from "./context/tasks";
@@ -21,23 +20,22 @@ export const AppRoutes = {
 };
 
 export default function App() {
-  // const [user, setUser] = useState(null);
 
   return (
     <Routes>
       <Route
         element={
           <TaskProvider>
-            <PrivateRoute /* user={user} */ />
+            <PrivateRoute />
           </TaskProvider>
         }
       >
-        <Route path={AppRoutes.MAIN} element={<MainPage /* user={user} */ />}>
+        <Route path={AppRoutes.MAIN} element={<MainPage />}>
           <Route path={AppRoutes.CARD + "/:id"} element={<CardPage />} />
           <Route path={AppRoutes.NEWCARD} element={<PopNewCard />} />
           <Route
             path={AppRoutes.USER_EXIT}
-            element={<PopUser /* setUser={setUser} */ />}
+            element={<PopUser />}
           />
         </Route>
       </Route>
