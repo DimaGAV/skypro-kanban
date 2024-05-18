@@ -1,6 +1,8 @@
 import { createContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { AppRoutes } from "../App";
 
-function getUserFromLocalStorage() {
+function getUserFromLS() {
   try {
     return JSON.parse(localStorage.getItem("user"));
   } catch (error) {
@@ -11,20 +13,23 @@ function getUserFromLocalStorage() {
 export const UserContext = createContext(null);
 
 export const UserProvider = ({ children }) => {
-  const [user, setUser] = useState(getUserFromLocalStorage());
+  let navigate = useNavigate();
+  const [user, setUser] = useState(getUserFromLS);
 
-  function login(newUser) {
+  function loginUser(newUser) {
     setUser(newUser);
     localStorage.setItem("user", JSON.stringify(newUser));
+    navigate(AppRoutes.LOGIN);
   }
 
-  function logout() {
+  function logoutUser() {
     setUser(null);
     localStorage.removeItem("user");
+    navigate(AppRoutes.LOGIN);
   }
 
   return (
-    <UserContext.Provider value={{ user, login, logout }}>
+    <UserContext.Provider value={{ user, loginUser, logoutUser }}>
       {children}
     </UserContext.Provider>
   );
