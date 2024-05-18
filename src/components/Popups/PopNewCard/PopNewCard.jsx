@@ -1,7 +1,51 @@
+import { useState } from "react";
+import { useTasks } from "../../../hooks/useTasks";
+import { useUser } from "../../../hooks/useUser";
 import * as M from "../../../styled/modal";
 import Calendar from "../../Calendar/Calendar";
 
-const PopNewCard = ({onCardAdd}) => {
+const PopNewCard = () => {
+  const { getTasks } = useTasks();
+  const { user } = useUser();
+
+  const [newTask, setNewTask] = useState({
+    title: "",
+    topic: "",
+    description: "",
+  });
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setNewTask({
+      ...newTask,
+      [name]: value,
+    });
+  };
+
+  const handleNewTaskAdd = async (e) => {
+    let newCard = {
+      ...newTask, data.selected,
+    }
+  try {
+    e.preventDefault()
+    await addNewTask({
+      token: user.token,
+      title: newCard.title,
+      topic: newCard.topic,
+      status: "Без статуса",
+      description: newCard.description,
+      date: newCard.data
+    })
+    .then((data) => {
+      getTasks(data.tasks)
+    })
+  } catch (error) {
+    
+  }
+
+  }
+
+  
   return (
     <M.CardMain id="popNewCard">
       <M.Container>
@@ -51,7 +95,7 @@ const PopNewCard = ({onCardAdd}) => {
                 </div>
               </M.CategoriesThemes>
             </M.Categories>
-            <button onClick = {onCardAdd} className="form-new__create _hover01" id="btnCreate">
+            <button className="form-new__create _hover01" id="btnCreate">
               Создать задачу
             </button>
           </M.Content>

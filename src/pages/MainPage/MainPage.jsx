@@ -2,14 +2,18 @@ import { useEffect, useState } from "react";
 import "../../App.css";
 import Header from "../../components/Header/Header";
 import Main from "../../components/Main/Main";
-import { statusList } from "../../data";
+// import { statusList } from "../../data";
 import { GlobalStyle } from "../../components/Global/Global.styled";
 import { Wrapper } from "../../styled/common";
 import { Outlet } from "react-router-dom";
 import { getCadrs } from "../../api";
+import { useUser } from "../../hooks/useUser";
+import { useTasks } from "../../hooks/useTasks";
 
-function MainPage({ user }) {
-  const [cards, setCards] = useState([]);
+function MainPage(/* { user } */) {
+  const { user } = useUser();
+  const { setTasks } = useTasks();
+  // const [cards, setCards] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -21,7 +25,7 @@ function MainPage({ user }) {
     transform: "translate(-50%, -50%)",
   };
 
-  function onCardAdd() {
+  /* function onCardAdd() {
     const newCard = {
       _id: cards.length + 1,
       topic: "Тема",
@@ -30,7 +34,7 @@ function MainPage({ user }) {
       status: statusList[0],
     };
     setCards([...cards, newCard]);
-  }
+  } */
 
   useEffect(() => {
     const onCards = async () => {
@@ -38,23 +42,25 @@ function MainPage({ user }) {
         const res = await getCadrs({
           token: user.token,
         });
-        setCards(res.tasks);
-        setIsLoading(false);
+        setTasks(res.tasks);
+        // setIsLoading(false);
       } catch (error) {
         console.error(error);
         setError("Не удалось загрузить данные, попробуйте позже");
+      } finally {
+        setIsLoading(false);
       }
     };
     onCards();
-  }, [user.token]);
+  }, [user, setTasks]);
 
   return (
     <>
       <GlobalStyle />
       <Wrapper>
-        <Header onCardAdd={onCardAdd} />
+        <Header user={user} />
         {error && <p style={loadingErrorText}>{error}</p>}
-        {!error && <Main cards={cards} isLoading={isLoading} />}
+        {!error && <Main /* cards={cards}  */ isLoading={isLoading} />}
         <Outlet />
       </Wrapper>
     </>
