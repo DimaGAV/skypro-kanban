@@ -132,6 +132,8 @@ export const CategoriesTtl = styled.p`
   line-height: 1;
 `;
 
+
+
 export const CategoriesThemes = styled.div`
   display: flex;
   flex-wrap: nowrap;
