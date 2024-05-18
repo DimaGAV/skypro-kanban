@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import "../../App.css";
 import Header from "../../components/Header/Header";
 import Main from "../../components/Main/Main";
-// import { statusList } from "../../data";
 import { GlobalStyle } from "../../components/Global/Global.styled";
 import { Wrapper } from "../../styled/common";
 import { Outlet } from "react-router-dom";
@@ -10,10 +9,9 @@ import { getCadrs } from "../../api";
 import { useUser } from "../../hooks/useUser";
 import { useTasks } from "../../hooks/useTasks";
 
-function MainPage(/* { user } */) {
+function MainPage() {
   const { user } = useUser();
   const { setTasks } = useTasks();
-  // const [cards, setCards] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -43,7 +41,6 @@ function MainPage(/* { user } */) {
           token: user.token,
         });
         setTasks(res.tasks);
-        // setIsLoading(false);
       } catch (error) {
         console.error(error);
         setError("Не удалось загрузить данные, попробуйте позже");

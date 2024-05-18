@@ -66,7 +66,7 @@ const PopNewCard = () => {
         <M.Block>
           <M.Content>
             <M.CardTitle>Создание задачи</M.CardTitle>
-            <Link to={AppRoutes.MAIN}>main&#10006;</Link>
+            <Link to={AppRoutes.MAIN}>&#10006;</Link>
             {/* <a href="#" className="pop-new-card__close">
               &#10006;
             </a> */}
