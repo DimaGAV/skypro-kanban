@@ -101,7 +101,7 @@ const PopNewCard = () => {
               </M.Form>
               <M.CardCalendar>
                 <M.CalendarTtl>Даты</M.CalendarTtl>
-                <Calendar onSelectDate={handleDateChange} />
+                <Calendar setSelected={handleDateChange} />
               </M.CardCalendar>
             </M.Wrap>
             <M.Categories>
