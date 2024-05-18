@@ -1,17 +1,17 @@
 import { createContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { AppRoutes } from "../App";
+// import { useNavigate } from "react-router-dom";
+// import { AppRoutes } from "../App";
 
 export const TasksContext = createContext(null);
 
 export const TaskProvider = ({ children }) => {
-  let navigate = useNavigate();
+//   let navigate = useNavigate();
 
   const [tasks, setTasks] = useState([]);
 
   const getTasks = (cards) => {
     setTasks(cards);
-    navigate(AppRoutes.MAIN);
+    // navigate(AppRoutes.MAIN);
   };
 
   return (
