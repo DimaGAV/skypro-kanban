@@ -43,13 +43,13 @@ function MainPage(/* { user } */) {
           token: user.token,
         });
         setTasks(res.tasks);
-        setIsLoading(false);
+        // setIsLoading(false);
       } catch (error) {
         console.error(error);
         setError("Не удалось загрузить данные, попробуйте позже");
-      } /* finally {
+      } finally {
         setIsLoading(false);
-      } */
+      }
     };
     onCards();
   }, [setTasks, user.token]);
@@ -58,9 +58,9 @@ function MainPage(/* { user } */) {
     <>
       <GlobalStyle />
       <Wrapper>
-        <Header /* user={user} */ />
+        <Header />
         {error && <p style={loadingErrorText}>{error}</p>}
-        {!error && <Main /* cards={cards}  */ isLoading={isLoading} />}
+        {!error && <Main isLoading={isLoading} />}
         <Outlet />
       </Wrapper>
     </>
