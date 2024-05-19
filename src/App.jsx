@@ -8,7 +8,6 @@ import Register from "./pages/Register/Register";
 import PopUser from "./components/Popups/PopUser/PopUser";
 import PopNewCard from "./components/Popups/PopNewCard/PopNewCard";
 import { TaskProvider } from "./context/tasks";
-import "react-day-picker/dist/style.css";
 
 
 export const AppRoutes = {

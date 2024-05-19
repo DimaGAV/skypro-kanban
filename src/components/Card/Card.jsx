@@ -6,6 +6,7 @@ import { AppRoutes } from "../../App";
 
 const Card = ({ id, topic, title, date }) => {
   const topicColor = getTopicColor(topic);
+  const cardDoneDate = new Date(date).toLocaleDateString()
   return (
     <S.Item>
       <S.Card>
@@ -56,7 +57,7 @@ const Card = ({ id, topic, title, date }) => {
                 </clipPath>
               </defs>
             </svg>
-            <T.DateP>{date}</T.DateP>
+            <T.DateP>{cardDoneDate}</T.DateP>
           </T.Date>
         </T.Content>
       </S.Card>
