@@ -28,6 +28,8 @@ export const CustomCalendar = styled(DayPicker)`
   .rdp-caption {
     height: 25px;
   }
-
+  .rdp-head_cell {
+    letter-spacing: 1px;
+  }
   margin: 0;
 `;
