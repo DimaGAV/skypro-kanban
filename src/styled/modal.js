@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { topicStyles } from "../lib/topic";
 
 export const ModalMain = styled.div`
   width: 100%;
@@ -184,10 +185,11 @@ export const CalendarTtl = styled.p`
 
 export const SelectedDate = styled.p`
 color: rgb(148, 166, 190);
+margin-top: 6px;
+padding-left: 6px;
 font-size: 10px;
 font-weight: 400;
 line-height: 12px;
-/* text-align: center; */
 `
 
 export const Categories = styled.div`
@@ -209,6 +211,13 @@ export const CategoriesThemes = styled.div`
   justify-content: flex-start;
 `;
 
+export const CategoriesThemeP = styled.p`
+font-size: 14px;
+  font-weight: 600;
+  line-height: 14px;
+  white-space: nowrap;
+`
+
 export const CategoriesTheme = styled.div`
   display: inline-block;
   width: auto;
@@ -216,5 +225,11 @@ export const CategoriesTheme = styled.div`
   padding: 8px 20px;
   border-radius: 24px;
   margin-right: 7px;
-  opacity: 0.4;
+  opacity: ${({ $isActive }) => ($isActive ? "1" : "0.4")};
+  background-color: ${({ $topicColor }) =>
+    topicStyles[$topicColor]?.backgroundColor || "#b4fdd1"};
+
+  ${CategoriesThemeP} {
+    color: ${({ $topicColor }) => topicStyles[$topicColor]?.color || "#06b16e"};
+  }
 `;

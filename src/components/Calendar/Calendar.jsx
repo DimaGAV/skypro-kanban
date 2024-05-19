@@ -1,4 +1,3 @@
-// Calendar.jsx
 import { MyDatePicker } from "../../lib/daypicker";
 
 const Calendar = ({ selected, setSelected }) => {

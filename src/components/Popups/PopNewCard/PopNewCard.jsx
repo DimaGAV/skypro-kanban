@@ -1,4 +1,3 @@
-// PopNewCard.jsx
 import { useState } from "react";
 import { useTasks } from "../../../hooks/useTasks";
 import { useUser } from "../../../hooks/useUser";
@@ -7,6 +6,7 @@ import Calendar from "../../Calendar/Calendar";
 import { AppRoutes } from "../../../App";
 import { addNewTask } from "../../../api";
 import { Link, useNavigate } from "react-router-dom";
+import { getTopicColor } from "../../../data";
 
 const PopNewCard = () => {
   const { getTasks } = useTasks();
@@ -45,9 +45,7 @@ const PopNewCard = () => {
   };
 
   const handleNewTaskAdd = async (e) => {
-    /* let newCard = {
-      ...newTask, data.selected,
-    } */
+    
     try {
       e.preventDefault();
       if (!newTask.title || newTask.title.trim().length === 0) {
@@ -141,29 +139,17 @@ const PopNewCard = () => {
               <M.CategoriesTtl>Категория</M.CategoriesTtl>
               <M.CategoriesThemes>
                 {["Web Design", "Research", "Copywriting"].map((topic) => (
-                  <div
+                  <M.CategoriesTheme
                     key={topic}
-                    className={`categories__theme _${topic
-                      .toLowerCase()
-                      .replace(" ", "_")} ${
-                      newTask.topic === topic ? "_active-category" : ""
-                    }`}
+                    $isActive={newTask.topic === topic}
+                    $topicColor={getTopicColor(topic)}
                     onClick={() => handleTopicChange(topic)}
                   >
-                    <p className={`_${topic.toLowerCase().replace(" ", "_")}`}>
+                    <M.CategoriesThemeP $topicColor={getTopicColor(topic)}>
                       {topic}
-                    </p>
-                  </div>
+                    </M.CategoriesThemeP>
+                  </M.CategoriesTheme>
                 ))}
-                {/* <div className="categories__theme _orange _active-category">
-                  <p className="_orange">Web Design</p>
-                </div>
-                <div className="categories__theme _green">
-                  <p className="_green">Research</p>
-                </div>
-                <div className="categories__theme _purple">
-                  <p className="_purple">Copywriting</p>
-                </div> */}
               </M.CategoriesThemes>
             </M.Categories>
             <M.CreateBtn

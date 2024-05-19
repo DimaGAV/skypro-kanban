@@ -338,7 +338,7 @@
   font-weight: 600;
   line-height: 1;
 }
-
+/* 
 .calendar {
   width: 182px;
   margin-bottom: 20px;
@@ -462,9 +462,9 @@
 
 ._current {
   font-weight: 700;
-}
+} */
 
-.categories {
+/* .categories {
   margin-bottom: 20px;
 }
 
@@ -494,7 +494,7 @@
   font-weight: 600;
   line-height: 14px;
   white-space: nowrap;
-}
+} */
 
 /* .pop-browse {
   /* display: none;
