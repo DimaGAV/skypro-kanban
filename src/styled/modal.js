@@ -139,6 +139,7 @@ export const FormArea = styled.textarea`
   line-height: 1px;
   color: #94A6BE;
   letter-spacing: -0.14px;
+  padding: 10px 0;
   }
   &::placeholder{
     font-weight: 400;
@@ -146,6 +147,7 @@ export const FormArea = styled.textarea`
   line-height: 1px;
   color: #94A6BE;
   letter-spacing: -0.14px;
+  padding: 9px 0;
   }
 `;
 
@@ -179,6 +181,14 @@ export const CalendarTtl = styled.p`
   font-weight: 600;
   line-height: 1;
 `;
+
+export const SelectedDate = styled.p`
+color: rgb(148, 166, 190);
+font-size: 10px;
+font-weight: 400;
+line-height: 12px;
+/* text-align: center; */
+`
 
 export const Categories = styled.div`
   margin-bottom: 20px;

@@ -128,12 +128,12 @@ const PopNewCard = () => {
                   selected={newTask.date}
                   setSelected={handleDateChange}
                 />
-                <p>
+                <M.SelectedDate>
                   Выберите срок исполнения.{" "}
                   {newTask.date
                     ? newTask.date.toLocaleDateString()
                     : "Не выбрано"}
-                </p>
+                </M.SelectedDate>
               </M.CardCalendar>
             </M.Wrap>
             {error && <p style={{ color: "red" }}>{error}</p>}
