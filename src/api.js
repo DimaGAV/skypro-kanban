@@ -74,7 +74,7 @@ export async function addNewTask({
   });
 
   if (!response.ok) {
-    throw new Error("Ошибка добавления данных");
+    throw new Error("Введенные данные не корректны! Задача не может быть создана. Пожалуйста, заполните все поля, выбирете категорию и дату выполнения");
   }
 
   const data = await response.json();

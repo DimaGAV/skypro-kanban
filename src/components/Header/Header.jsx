@@ -4,9 +4,11 @@ import * as S from "./Header.styled";
 import { Container } from "../../styled/common";
 import { Link, useNavigate } from "react-router-dom";
 import { AppRoutes } from "../../App";
+import { useUser } from "../../hooks/useUser";
 
 
-const Header = (/* {onCardAdd} */) => {
+const Header = () => {
+	const {user} = useUser()
 	const [userWindow, setWindow] = useState(true)
 	function handleClick() {
 		setWindow(!userWindow)
@@ -39,10 +41,10 @@ navigate(AppRoutes.USER_EXIT)
 							<Link to={AppRoutes.NEWCARD}>Создать новую задачу</Link>
 							</S.BtnMainNew>            
 						<S.User href="#" 
-						onClick = {handleClick}>Ivan Ivanov</S.User>
+						onClick = {handleClick}>{user.name}</S.User>
 						<div className="header__pop-user-set pop-user-set" id="user-set-target">
-							<p className="pop-user-set__name">Ivan Ivanov</p>
-							<p className="pop-user-set__mail">ivan.ivanov@gmail.com</p>
+							<p className="pop-user-set__name">{user.name}</p>
+							<p className="pop-user-set__mail">{user.login}</p>
 							<div className="pop-user-set__theme">
 								<p>Темная тема</p>
 								<input type="checkbox" className="checkbox" name="checkbox" />

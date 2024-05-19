@@ -5,16 +5,20 @@ import * as M from "../../../styled/modal";
 import Calendar from "../../Calendar/Calendar";
 import { AppRoutes } from "../../../App";
 import { addNewTask } from "../../../api";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const PopNewCard = () => {
   const { getTasks } = useTasks();
   const { user } = useUser();
 
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
+
   const [newTask, setNewTask] = useState({
     title: "",
     topic: "",
     description: "",
+    date: "",
   });
 
   const handleInputChange = (event) => {
@@ -45,6 +49,21 @@ const PopNewCard = () => {
     } */
     try {
       e.preventDefault();
+      if (!newTask.title || newTask.title.trim().length === 0) {
+        setError("Не введено название!");
+        return;
+      }
+  
+      if (!newTask.description || newTask.description.trim().length === 0) {
+        setError("Не введено описание!");
+        return;
+      }
+      
+      if (!newTask.topic) {
+        setError("Не выбрана категория!");
+        return;
+      }
+
       await addNewTask({
         token: user.token,
         title: newTask.title,
@@ -54,9 +73,11 @@ const PopNewCard = () => {
         date: newTask.date,
       }).then((data) => {
         getTasks(data.tasks);
+        navigate(AppRoutes.MAIN);
       });
     } catch (error) {
-      console.log(error.message);
+      console.error(error);
+      setError(error.message);
     }
   };
 
@@ -67,14 +88,8 @@ const PopNewCard = () => {
           <M.Content>
             <M.CardTitle>Создание задачи</M.CardTitle>
             <Link to={AppRoutes.MAIN}>&#10006;</Link>
-            {/* <a href="#" className="pop-new-card__close">
-              &#10006;
-            </a> */}
             <M.Wrap>
-              <M.Form
-                id="formNewCard"
-                /* action="#"  */ onSubmit={handleNewTaskAdd}
-              >
+              <M.Form id="formNewCard" onSubmit={handleNewTaskAdd}>
                 <M.FormBlock>
                   <M.Subttl htmlFor="formTitle">Название задачи</M.Subttl>
                   <M.FormInput
@@ -102,8 +117,10 @@ const PopNewCard = () => {
               <M.CardCalendar>
                 <M.CalendarTtl>Даты</M.CalendarTtl>
                 <Calendar setSelected={handleDateChange} />
+                <p>Выберите срок исполнения.</p>
               </M.CardCalendar>
             </M.Wrap>
+            {error && <p style={{ color: "red" }}>{error}</p>}
             <M.Categories>
               <M.CategoriesTtl>Категория</M.CategoriesTtl>
               <M.CategoriesThemes>

@@ -280,7 +280,7 @@
   flex-direction: column;
 }
 
-.form-new__input, .form-new__area {
+/* .form-new__input, .form-new__area {
   width: 100%;
   outline: none;
   padding: 14px;
@@ -290,9 +290,9 @@
   font-size: 14px;
   line-height: 1;
   letter-spacing: -0.14px;
-}
+} */
 
-.form-new__input::-moz-placeholder, .form-new__area::-moz-placeholder {
+/* .form-new__input::-moz-placeholder, .form-new__area::-moz-placeholder {
   font-weight: 400;
   font-size: 14px;
   line-height: 1px;
@@ -306,9 +306,9 @@
   line-height: 1px;
   color: #94A6BE;
   letter-spacing: -0.14px;
-}
+} */
 
-.form-new__input {
+/* .form-new__input {
   margin: 20px 0;
 }
 
@@ -316,7 +316,7 @@
   max-width: 370px;
   margin-top: 14px;
   height: 200px;
-}
+} */
 
 .form-new__create {
   width: 132px;

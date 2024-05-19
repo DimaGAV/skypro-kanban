@@ -1,4 +1,4 @@
-import { Link, /* useNavigate */ } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { AppRoutes } from "../../App";
 import * as S from "../../components/Form/Form";
 import { useState } from "react";
@@ -11,8 +11,6 @@ export default function Login() {
   const linkStyle = {
     color: "rgba(148, 166, 190, 0.4)",
   };
-
-  // const navigate = useNavigate();
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -29,8 +27,6 @@ export default function Login() {
     try {
       const data = await loginUser(formData);
       isLoginUser(data.user);
-      console.log("User logged in, navigating to main page...");
-      // navigate(AppRoutes.MAIN);
     } catch (error) {
       console.error("Ошибка", error);
       setAddLoginError(error.message);

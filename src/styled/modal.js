@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const ModalMain = styled.div`
-  /* display: none; */
   width: 100%;
   height: 100%;
   min-width: 375px;
@@ -90,8 +89,24 @@ export const FormInput = styled.input`
   border: 0.7px solid rgba(148, 166, 190, 0.4);
   border-radius: 8px;
   font-size: 14px;
+  font-family: Roboto;
   line-height: 1;
   letter-spacing: -0.14px;
+  margin: 20px 0;
+  &::-moz-placeholder{
+    font-weight: 400;
+  font-size: 14px;
+  line-height: 1px;
+  color: #94A6BE;
+  letter-spacing: -0.14px;
+  }
+  &::placeholder{
+    font-weight: 400;
+  font-size: 14px;
+  line-height: 1px;
+  color: #94A6BE;
+  letter-spacing: -0.14px;
+  }
 `;
 
 export const FormArea = styled.textarea`
@@ -101,9 +116,27 @@ export const FormArea = styled.textarea`
   background: transparent;
   border: 0.7px solid rgba(148, 166, 190, 0.4);
   border-radius: 8px;
+  font-family: Roboto;
   font-size: 14px;
   line-height: 1;
   letter-spacing: -0.14px;
+  max-width: 370px;
+  margin-top: 14px;
+  height: 200px;
+  &::-moz-placeholder{
+    font-weight: 400;
+  font-size: 14px;
+  line-height: 1px;
+  color: #94A6BE;
+  letter-spacing: -0.14px;
+  }
+  &::placeholder{
+    font-weight: 400;
+  font-size: 14px;
+  line-height: 1px;
+  color: #94A6BE;
+  letter-spacing: -0.14px;
+  }
 `;
 
 export const CardCalendar = styled.div`
@@ -131,8 +164,6 @@ export const CategoriesTtl = styled.p`
   font-weight: 600;
   line-height: 1;
 `;
-
-
 
 export const CategoriesThemes = styled.div`
   display: flex;
