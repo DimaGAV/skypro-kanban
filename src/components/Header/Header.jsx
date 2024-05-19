@@ -38,7 +38,7 @@ navigate(AppRoutes.USER_EXIT)
 					</S.Logo>
 					<S.Nav>
 						<S.BtnMainNew id="btnMainNew">
-							<Link to={AppRoutes.NEWCARD}>Создать новую задачу</Link>
+							<Link to={AppRoutes.NEWCARD}><S.BtnMainNewText>Создать новую задачу</S.BtnMainNewText></Link>
 							</S.BtnMainNew>            
 						<S.User href="#" 
 						onClick = {handleClick}>{user.name}</S.User>

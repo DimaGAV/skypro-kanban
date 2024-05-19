@@ -56,6 +56,16 @@ export const CardTitle = styled(Title)`
   margin-bottom: 20px;
 `;
 
+export const Close = styled.p`
+position: absolute;
+  top: 20px;
+  right: 30px;
+  color: #94A6BE;
+  cursor: pointer;
+  &:hover {
+  color: #000000;
+}
+`
 export const Wrap = styled.div`
   display: flex;
   align-items: flex-start;
@@ -138,6 +148,23 @@ export const FormArea = styled.textarea`
   letter-spacing: -0.14px;
   }
 `;
+
+export const CreateBtn = styled.button`
+width: 132px;
+  height: 30px;
+  background-color: #565EEF;
+  border-radius: 4px;
+  border: 0;
+  outline: none;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  color: #FFFFFF;
+  float: right;
+  &:hover {
+    background-color: #33399b;
+  }
+`
 
 export const CardCalendar = styled.div`
   width: 182px;

@@ -1,5 +1,5 @@
+// daypicker.jsx
 import { useState } from "react";
-
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 import { ru } from "date-fns/locale";

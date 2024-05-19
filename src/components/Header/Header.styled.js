@@ -70,9 +70,9 @@ export const BtnMainNew = styled.button`
   height: 30px;
   border-radius: 4px;
   background-color: #565eef;
-  color: #ffffff;
   border: none;
   font-size: 14px;
+  font-family: Roboto;
   line-height: 1;
   font-weight: 500;
   margin-right: 20px;
@@ -94,6 +94,6 @@ export const BtnMainNew = styled.button`
   }
 `;
 
-export const BtnMainNewLink = styled.a`
+export const BtnMainNewText = styled.p`
   color: #ffffff;
 `;

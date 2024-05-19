@@ -1,3 +1,4 @@
+// PopNewCard.jsx
 import { useState } from "react";
 import { useTasks } from "../../../hooks/useTasks";
 import { useUser } from "../../../hooks/useUser";
@@ -18,7 +19,7 @@ const PopNewCard = () => {
     title: "",
     topic: "",
     description: "",
-    date: "",
+    date: null,
   });
 
   const handleInputChange = (event) => {
@@ -53,14 +54,19 @@ const PopNewCard = () => {
         setError("Не введено название!");
         return;
       }
-  
+
       if (!newTask.description || newTask.description.trim().length === 0) {
         setError("Не введено описание!");
         return;
       }
-      
+
       if (!newTask.topic) {
         setError("Не выбрана категория!");
+        return;
+      }
+
+      if (!newTask.date) {
+        setError("Не выбран срок исполнения!");
         return;
       }
 
@@ -87,7 +93,9 @@ const PopNewCard = () => {
         <M.Block>
           <M.Content>
             <M.CardTitle>Создание задачи</M.CardTitle>
-            <Link to={AppRoutes.MAIN}>&#10006;</Link>
+            <Link to={AppRoutes.MAIN}>
+              <M.Close>&#10006;</M.Close>
+            </Link>
             <M.Wrap>
               <M.Form id="formNewCard" onSubmit={handleNewTaskAdd}>
                 <M.FormBlock>
@@ -116,8 +124,16 @@ const PopNewCard = () => {
               </M.Form>
               <M.CardCalendar>
                 <M.CalendarTtl>Даты</M.CalendarTtl>
-                <Calendar setSelected={handleDateChange} />
-                <p>Выберите срок исполнения.</p>
+                <Calendar
+                  selected={newTask.date}
+                  setSelected={handleDateChange}
+                />
+                <p>
+                  Выберите срок исполнения.{" "}
+                  {newTask.date
+                    ? newTask.date.toLocaleDateString()
+                    : "Не выбрано"}
+                </p>
               </M.CardCalendar>
             </M.Wrap>
             {error && <p style={{ color: "red" }}>{error}</p>}
@@ -150,14 +166,13 @@ const PopNewCard = () => {
                 </div> */}
               </M.CategoriesThemes>
             </M.Categories>
-            <button
+            <M.CreateBtn
               onClick={handleNewTaskAdd}
               type="submit"
-              className="form-new__create _hover01"
               id="btnCreate"
             >
               Создать задачу
-            </button>
+            </M.CreateBtn>
           </M.Content>
         </M.Block>
       </M.Container>
