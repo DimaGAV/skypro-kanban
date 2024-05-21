@@ -1,9 +1,32 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Calendar from "../../Calendar/Calendar";
 import { AppRoutes } from "../../../App";
 import * as M from "../../../styled/modal";
+import { deleteCadr } from "../../../api";
+import { useTasks } from "../../../hooks/useTasks";
+import { useUser } from "../../../hooks/useUser";
 
 const PopBrowse = ({ id }) => {
+  const { getTasks } = useTasks();
+  const { user } = useUser();
+  const navigate = useNavigate();
+
+  const handleDeleteTask = async (e) => {
+    if (user && user.token) {
+      try {
+        e.preventDefault();
+        await deleteCadr({ token: user.token, id }).then((data) => {
+          getTasks(data.tasks);
+          navigate(AppRoutes.MAIN);
+        });
+      } catch (error) {
+        console.error("Ошибка:", error);
+      }
+    } else {
+      console.error("User is not authorization");
+    }
+  };
+
   return (
     <M.ModalMain id="popBrowse">
       <M.Container>
@@ -64,7 +87,10 @@ const PopBrowse = ({ id }) => {
                 <button className="btn-browse__edit _btn-bor _hover03">
                   <a href="#">Редактировать задачу</a>
                 </button>
-                <button className="btn-browse__delete _btn-bor _hover03">
+                <button
+                  onClick={handleDeleteTask}
+                  className="btn-browse__delete _btn-bor _hover03"
+                >
                   <a href="#">Удалить задачу</a>
                 </button>
               </div>
