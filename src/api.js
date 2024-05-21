@@ -50,3 +50,33 @@ export async function registerUser({ name, login, password }) {
 
   return data;
 }
+
+export async function addNewTask({
+  token,
+  title,
+  topic,
+  status,
+  description,
+  date,
+}) {
+  const response = await fetch("https://wedev-api.sky.pro/api/kanban", {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    method: "POST",
+    body: JSON.stringify({
+      title,
+      topic,
+      status,
+      description,
+      date,
+    }),
+  });
+
+  if (!response.ok) {
+    throw new Error("Введенные данные не корректны! Задача не может быть создана. Пожалуйста, заполните все поля, выбирете категорию и дату выполнения");
+  }
+
+  const data = await response.json();
+  return data;
+}

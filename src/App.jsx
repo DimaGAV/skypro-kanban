@@ -5,8 +5,10 @@ import CardPage from "./pages/CardPage/CardPage";
 import Login from "./pages/Login/Login";
 import NotFound from "./pages/NotFound/NotFound";
 import Register from "./pages/Register/Register";
-import { useState } from "react";
 import PopUser from "./components/Popups/PopUser/PopUser";
+import PopNewCard from "./components/Popups/PopNewCard/PopNewCard";
+import { TaskProvider } from "./context/tasks";
+
 
 export const AppRoutes = {
   MAIN: "/",
@@ -15,27 +17,31 @@ export const AppRoutes = {
   USER_EXIT: "/exit",
   LOGIN: "/login",
   REGISTER: "/register",
+  NEWCARD: "/newcard",
 };
 
 export default function App() {
-  const [user, setUser] = useState(null);
 
   return (
     <Routes>
-      <Route element={<PrivateRoute user={user} />}>
-        <Route path={AppRoutes.MAIN} element={<MainPage user={user} />}>
+      <Route
+        element={
+          <TaskProvider>
+            <PrivateRoute />
+          </TaskProvider>
+        }
+      >
+        <Route path={AppRoutes.MAIN} element={<MainPage />}>
           <Route path={AppRoutes.CARD + "/:id"} element={<CardPage />} />
+          <Route path={AppRoutes.NEWCARD} element={<PopNewCard />} />
           <Route
             path={AppRoutes.USER_EXIT}
-            element={<PopUser setUser={setUser} />}
+            element={<PopUser />}
           />
         </Route>
       </Route>
 
-      <Route
-        path={AppRoutes.LOGIN}
-        element={<Login setUser={setUser} />}
-      />
+      <Route path={AppRoutes.LOGIN} element={<Login />} />
       <Route path={AppRoutes.REGISTER} element={<Register />} />
       <Route path={AppRoutes.NOT_FOUND} element={<NotFound />} />
     </Routes>

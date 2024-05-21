@@ -6,6 +6,7 @@ import { AppRoutes } from "../../App";
 
 const Card = ({ id, topic, title, date }) => {
   const topicColor = getTopicColor(topic);
+  const cardDoneDate = new Date(date).toLocaleDateString()
   return (
     <S.Item>
       <S.Card>
@@ -13,7 +14,6 @@ const Card = ({ id, topic, title, date }) => {
           <T.Topic $topicColor={topicColor}>
             <T.TopicText>{topic}</T.TopicText>
           </T.Topic>
-          {/* <a href="#popBrowse" target="_self"> */}
           <Link to={AppRoutes.CARD + "/" + id}>
             <T.Btn>
               <T.BtnDiv></T.BtnDiv>
@@ -21,12 +21,9 @@ const Card = ({ id, topic, title, date }) => {
               <T.BtnDiv></T.BtnDiv>
             </T.Btn>
           </Link>
-          {/* </a> */}
         </T.Group>
         <T.Content>
-            {/* <a href="" target="_blank"> */}
             <T.Title>{title}</T.Title>
-          {/* </a> */}
           <T.Date>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -56,7 +53,7 @@ const Card = ({ id, topic, title, date }) => {
                 </clipPath>
               </defs>
             </svg>
-            <T.DateP>{date}</T.DateP>
+            <T.DateP>{cardDoneDate}</T.DateP>
           </T.Date>
         </T.Content>
       </S.Card>

@@ -1,12 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { AppRoutes } from "../../../App";
+import { useUser } from "../../../hooks/useUser";
 
-const PopUser = (setUser) => {
+const PopUser = () => {
+  const {logoutUser} = useUser()
   const navigate = useNavigate();
-  const handleLogOut = () => {
-    setUser(null);
-    navigate(AppRoutes.LOGIN);
-  };
+  
   const handleToMain = () => {
     navigate(AppRoutes.MAIN);
     document.getElementById("user-set-target").style.display = "none";
@@ -21,7 +20,7 @@ const PopUser = (setUser) => {
           <form className="pop-exit__form" id="formExit" action="#">
             <div className="pop-exit__form-group">
               <button
-                onClick={handleLogOut}
+                onClick={logoutUser}
                 className="pop-exit__exit-yes _hover03"
                 id="exitYes"
               >
