@@ -23,17 +23,6 @@ function MainPage() {
     transform: "translate(-50%, -50%)",
   };
 
-  /* function onCardAdd() {
-    const newCard = {
-      _id: cards.length + 1,
-      topic: "Тема",
-      title: "Название задачи",
-      date: new Date().toLocaleDateString(),
-      status: statusList[0],
-    };
-    setCards([...cards, newCard]);
-  } */
-
   useEffect(() => {
     const onCards = async () => {
       try {

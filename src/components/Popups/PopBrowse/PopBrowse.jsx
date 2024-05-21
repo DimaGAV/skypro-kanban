@@ -5,11 +5,14 @@ import * as M from "../../../styled/modal";
 import { deleteCadr } from "../../../api";
 import { useTasks } from "../../../hooks/useTasks";
 import { useUser } from "../../../hooks/useUser";
+import { useState } from "react";
 
 const PopBrowse = ({ id }) => {
   const { getTasks } = useTasks();
   const { user } = useUser();
   const navigate = useNavigate();
+  const [error, setError] = useState(null);
+  // const [isEditing, setIsEditing] = useState(false)
 
   const handleDeleteTask = async (e) => {
     if (user && user.token) {
@@ -17,13 +20,79 @@ const PopBrowse = ({ id }) => {
         e.preventDefault();
         await deleteCadr({ token: user.token, id }).then((data) => {
           getTasks(data.tasks);
+
           navigate(AppRoutes.MAIN);
         });
       } catch (error) {
         console.error("Ошибка:", error);
+        setError(error.massage);
       }
-    } else {
-      console.error("User is not authorization");
+    }
+  };
+
+  const [currentTask, setCurrentTask] = useState({
+    status: "",
+    description: "",
+    date: null,
+  });
+
+  const handleStatusChange = (status) => {
+    setCurrentTask({
+      ...currentTask,
+      status,
+    });
+  };
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setCurrentTask({
+      ...currentTask,
+      [name]: value,
+    });
+  };
+
+  const handleDateChange = (selectedDate) => {
+    setCurrentTask({
+      ...currentTask,
+      date: selectedDate,
+    });
+  };
+
+  const handleEditTask = async (e) => {
+    try {
+      e.preventDefault();
+
+      if (
+        !currentTask.description ||
+        currentTask.description.trim().length === 0
+      ) {
+        setError("Не введено описание!");
+        return;
+      }
+
+      if (!currentTask.status) {
+        setError("Не выбран статус!");
+        return;
+      }
+
+      if (!currentTask.date) {
+        setError("Не выбран срок исполнения!");
+        return;
+      }
+
+      await updateTask({
+        token: user.token,
+        id,
+        status: currentTask.status,
+        description: currentTask.description,
+        date: currentTask.date,
+      }).then((data) => {
+        getTasks(data.tasks);
+        navigate(AppRoutes.MAIN);
+      });
+    } catch (error) {
+      console.error(error);
+      setError(error.message);
     }
   };
 
@@ -33,7 +102,7 @@ const PopBrowse = ({ id }) => {
         <M.Block>
           <M.Content>
             <div className="pop-browse__top-block">
-              <M.Title>Карточка с ID: {id}</M.Title>
+              <M.Title>{id}</M.Title>
               <div className="categories__theme theme-top _orange _active-category">
                 <p className="_orange">Web Design</p>
               </div>
@@ -73,15 +142,24 @@ const PopBrowse = ({ id }) => {
               </M.Form>
               <M.CardCalendar>
                 <M.CalendarTtl>Даты</M.CalendarTtl>
-                <Calendar />
+                <Calendar
+                  selected={currentTask.date}
+                  setSelected={handleDateChange}
+                />
+                <M.SelectedDate>
+                  Срок исполнения:{" "}
+                  {currentTask.date
+                    ? currentTask.date.toLocaleDateString()
+                    : "Не выбрано"}
+                </M.SelectedDate>
               </M.CardCalendar>
             </M.Wrap>
-            <div className="theme-down__categories theme-down">
+            {/* <div className="theme-down__categories theme-down">
               <p className="categories__p subttl">Категория</p>
               <div className="categories__theme _orange _active-category">
                 <p className="_orange">Web Design</p>
               </div>
-            </div>
+            </div> */}
             <div className="pop-browse__btn-browse ">
               <div className="btn-group">
                 <button className="btn-browse__edit _btn-bor _hover03">

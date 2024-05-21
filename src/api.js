@@ -101,5 +101,4 @@ export async function deleteCadr({ token, id }) {
 
   const data = await response.json();
   return data;
-  // return {success: true};
 }
