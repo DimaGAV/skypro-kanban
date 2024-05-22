@@ -102,3 +102,36 @@ export async function deleteCadr({ token, id }) {
   const data = await response.json();
   return data;
 }
+
+export async function updateTask({
+  token,
+  id,
+  status,
+  topic,
+  description,
+  date,
+  title,
+}) {
+  const response = await fetch(`${tasksHost}/${id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    method: "POST",
+    body: JSON.stringify({
+      title,
+      topic,
+      status,
+      description,
+      date,
+    }),
+  });
+
+  if (!response.ok) {
+    throw new Error(
+      "Введенные данные не корректны! Задача не может быть откоректирована"
+    );
+  }
+
+  const data = await response.json();
+  return data;
+}

@@ -196,7 +196,7 @@ export const SelectedDate = styled.p`
 `;
 
 export const SelectedDateSpan = styled.span`
-  color: black;
+  color: #000;
 `;
 
 export const Categories = styled.div`
@@ -266,8 +266,11 @@ export const StatusThem = styled.div`
   padding: 11px 14px 10px;
   margin-right: 7px;
   margin-bottom: 7px;
-  display: ${({ $isEditing }) => ($isEditing ? "block" : "none")};
+  display: ${(props) => (props.isEditing ? "block" : "none")};
+  background-color: ${(props) => (props.isActive ? "#94A6BE" : "#fff")};
+
   & p {
+    color: ${(props) => (props.isActive ? "#fff" : "#94a6be")};
     font-size: 14px;
     line-height: 1;
     letter-spacing: -0.14px;

@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Calendar from "../../Calendar/Calendar";
 import { AppRoutes } from "../../../App";
 import * as M from "../../../styled/modal";
-import { deleteCadr } from "../../../api";
+import { deleteCadr, updateTask } from "../../../api";
 import { useTasks } from "../../../hooks/useTasks";
 import { useUser } from "../../../hooks/useUser";
 import { useState } from "react";
@@ -13,7 +13,7 @@ const PopBrowse = ({ id }) => {
   const { user } = useUser();
   const navigate = useNavigate();
   const [error, setError] = useState(null);
-  const [isEditing, setIsEditing] = useState(true);
+  const [isEditing, setIsEditing] = useState(false);
 
   const handleDeleteTask = async (e) => {
     if (user && user.token) {
@@ -32,31 +32,33 @@ const PopBrowse = ({ id }) => {
   };
 
   const [currentTask, setCurrentTask] = useState({
+    title: "",
     status: "",
     description: "",
     date: null,
+    topic: "Web Design",
   });
 
   const handleStatusChange = (status) => {
-    setCurrentTask({
-      ...currentTask,
+    setCurrentTask((prevState) => ({
+      ...prevState,
       status,
-    });
+    }));
   };
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setCurrentTask({
-      ...currentTask,
+    setCurrentTask((prevState) => ({
+      ...prevState,
       [name]: value,
-    });
+    }));
   };
 
   const handleDateChange = (selectedDate) => {
-    setCurrentTask({
-      ...currentTask,
+    setCurrentTask((prevState) => ({
+      ...prevState,
       date: selectedDate,
-    });
+    }));
   };
   const handleEditClick = () => {
     setIsEditing(true);
@@ -94,6 +96,7 @@ const PopBrowse = ({ id }) => {
         status: currentTask.status,
         description: currentTask.description,
         date: currentTask.date,
+        topic: currentTask.topic,
       }).then((data) => {
         getTasks(data.tasks);
         navigate(AppRoutes.MAIN);
@@ -110,7 +113,7 @@ const PopBrowse = ({ id }) => {
         <M.Block>
           <M.Content>
             <M.BrowseTopBlock>
-              <M.Title>{id}</M.Title>
+              <M.Title>Название задачи</M.Title>
               <M.CategoriesTheme
                 $isActive
                 $topicColor={getTopicColor(currentTask.topic)}
@@ -125,21 +128,22 @@ const PopBrowse = ({ id }) => {
             <M.Status>
               <M.StatusPTtl>Статус</M.StatusPTtl>
               <M.StatusThemes>
-                <div className="status__theme _hide">
-                  <p>Без статуса</p>
-                </div>
-                <M.StatusThem isEditing={isEditing}>
-                  <p>Нужно сделать</p>
-                </M.StatusThem>
-                <div className="status__theme _hide">
-                  <p>В работе</p>
-                </div>
-                <div className="status__theme _hide">
-                  <p>Тестирование</p>
-                </div>
-                <div className="status__theme _hide">
-                  <p>Готово</p>
-                </div>
+                {[
+                  "Без статуса",
+                  "Нужно сделать",
+                  "В работе",
+                  "Тестирование",
+                  "Готово",
+                ].map((status) => (
+                  <M.StatusThem
+                    key={status}
+                    isEditing={isEditing}
+                    isActive={currentTask.status === status}
+                    onClick={() => handleStatusChange(status)}
+                  >
+                    <p>{status}</p>
+                  </M.StatusThem>
+                ))}
               </M.StatusThemes>
             </M.Status>
             <M.Wrap>
