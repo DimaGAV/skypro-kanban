@@ -58,15 +58,15 @@ export const CardTitle = styled(Title)`
 `;
 
 export const Close = styled.p`
-position: absolute;
+  position: absolute;
   top: 20px;
   right: 30px;
-  color: #94A6BE;
+  color: #94a6be;
   cursor: pointer;
   &:hover {
-  color: #000000;
-}
-`
+    color: #000000;
+  }
+`;
 export const Wrap = styled.div`
   display: flex;
   align-items: flex-start;
@@ -104,19 +104,19 @@ export const FormInput = styled.input`
   line-height: 1;
   letter-spacing: -0.14px;
   margin: 20px 0;
-  &::-moz-placeholder{
+  &::-moz-placeholder {
     font-weight: 400;
-  font-size: 14px;
-  line-height: 1px;
-  color: #94A6BE;
-  letter-spacing: -0.14px;
+    font-size: 14px;
+    line-height: 1px;
+    color: #94a6be;
+    letter-spacing: -0.14px;
   }
-  &::placeholder{
+  &::placeholder {
     font-weight: 400;
-  font-size: 14px;
-  line-height: 1px;
-  color: #94A6BE;
-  letter-spacing: -0.14px;
+    font-size: 14px;
+    line-height: 1px;
+    color: #94a6be;
+    letter-spacing: -0.14px;
   }
 `;
 
@@ -134,40 +134,44 @@ export const FormArea = styled.textarea`
   max-width: 370px;
   margin-top: 14px;
   height: 200px;
-  &::-moz-placeholder{
+  &::-moz-placeholder {
     font-weight: 400;
-  font-size: 14px;
-  line-height: 1px;
-  color: #94A6BE;
-  letter-spacing: -0.14px;
-  padding: 10px 0;
+    font-size: 14px;
+    line-height: 1px;
+    color: #94a6be;
+    letter-spacing: -0.14px;
+    padding: 10px 0;
   }
-  &::placeholder{
+  &::placeholder {
     font-weight: 400;
-  font-size: 14px;
-  line-height: 1px;
-  color: #94A6BE;
-  letter-spacing: -0.14px;
-  padding: 9px 0;
+    font-size: 14px;
+    line-height: 1px;
+    color: #94a6be;
+    letter-spacing: -0.14px;
+    padding: 9px 0;
   }
 `;
 
+export const FormBrowseArea = styled(FormArea)`
+  background: #eaeef6;
+`;
+
 export const CreateBtn = styled.button`
-width: 132px;
+  width: 132px;
   height: 30px;
-  background-color: #565EEF;
+  background-color: #565eef;
   border-radius: 4px;
   border: 0;
   outline: none;
   font-size: 14px;
   font-weight: 500;
   line-height: 1;
-  color: #FFFFFF;
+  color: #ffffff;
   float: right;
   &:hover {
     background-color: #33399b;
   }
-`
+`;
 
 export const CardCalendar = styled.div`
   width: 182px;
@@ -184,13 +188,18 @@ export const CalendarTtl = styled.p`
 `;
 
 export const SelectedDate = styled.p`
-color: rgb(148, 166, 190);
-margin-top: 6px;
-padding-left: 6px;
-font-size: 10px;
-font-weight: 400;
-line-height: 12px;
-`
+  color: rgb(148, 166, 190);
+  margin-top: 6px;
+  padding-left: 6px;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 12px;
+`;
+
+export const SelectedDateSpan = styled(SelectedDate)`
+color: black
+/* display: block */
+`;
 
 export const Categories = styled.div`
   margin-bottom: 20px;
@@ -212,11 +221,11 @@ export const CategoriesThemes = styled.div`
 `;
 
 export const CategoriesThemeP = styled.p`
-font-size: 14px;
+  font-size: 14px;
   font-weight: 600;
   line-height: 14px;
   white-space: nowrap;
-`
+`;
 
 export const CategoriesTheme = styled.div`
   display: inline-block;
@@ -232,4 +241,11 @@ export const CategoriesTheme = styled.div`
   ${CategoriesThemeP} {
     color: ${({ $topicColor }) => topicStyles[$topicColor]?.color || "#06b16e"};
   }
+`;
+
+export const BrowseTopBlock = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
 `;

@@ -6,13 +6,14 @@ import { deleteCadr } from "../../../api";
 import { useTasks } from "../../../hooks/useTasks";
 import { useUser } from "../../../hooks/useUser";
 import { useState } from "react";
+import { getTopicColor } from "../../../data";
 
 const PopBrowse = ({ id }) => {
   const { getTasks } = useTasks();
   const { user } = useUser();
   const navigate = useNavigate();
   const [error, setError] = useState(null);
-  // const [isEditing, setIsEditing] = useState(false)
+  const [isEditing, setIsEditing] = useState(false);
 
   const handleDeleteTask = async (e) => {
     if (user && user.token) {
@@ -56,6 +57,13 @@ const PopBrowse = ({ id }) => {
       ...currentTask,
       date: selectedDate,
     });
+  };
+  const handleEditClick = () => {
+    setIsEditing(true);
+  };
+
+  const handleCancelEdit = () => {
+    setIsEditing(false);
   };
 
   const handleEditTask = async (e) => {
@@ -101,12 +109,19 @@ const PopBrowse = ({ id }) => {
       <M.Container>
         <M.Block>
           <M.Content>
-            <div className="pop-browse__top-block">
+            <M.BrowseTopBlock>
               <M.Title>{id}</M.Title>
-              <div className="categories__theme theme-top _orange _active-category">
-                <p className="_orange">Web Design</p>
-              </div>
-            </div>
+              <M.CategoriesTheme
+                $isActive
+                $topicColor={getTopicColor(currentTask.topic)}
+              >
+                <M.CategoriesThemeP
+                  $topicColor={getTopicColor(currentTask.topic)}
+                >
+                  {currentTask.topic}
+                </M.CategoriesThemeP>
+              </M.CategoriesTheme>
+            </M.BrowseTopBlock>
             <div className="pop-browse__status status">
               <p className="status__p subttl">Статус</p>
               <div className="status__themes">
@@ -131,13 +146,15 @@ const PopBrowse = ({ id }) => {
               <M.Form id="formBrowseCard" action="#">
                 <M.FormBlock>
                   <M.Subttl htmlFor="textArea01">Описание задачи</M.Subttl>
-                  <textarea
-                    className="form-browse__area"
-                    name="text"
+                  <M.FormBrowseArea
+                    name="description"
                     id="textArea01"
-                    readOnly
+                    readOnly={!isEditing}
+                    value={currentTask.description}
+                    onChange={handleInputChange}
                     placeholder="Введите описание задачи..."
-                  ></textarea>
+                    isEditing={isEditing}
+                  ></M.FormBrowseArea>
                 </M.FormBlock>
               </M.Form>
               <M.CardCalendar>
@@ -147,10 +164,12 @@ const PopBrowse = ({ id }) => {
                   setSelected={handleDateChange}
                 />
                 <M.SelectedDate>
-                  Срок исполнения:{" "}
-                  {currentTask.date
-                    ? currentTask.date.toLocaleDateString()
-                    : "Не выбрано"}
+                  Срок исполнения:
+                  <M.SelectedDateSpan>
+                    {currentTask.date
+                      ? currentTask.date.toLocaleDateString()
+                      : "Не выбрано"}
+                  </M.SelectedDateSpan>
                 </M.SelectedDate>
               </M.CardCalendar>
             </M.Wrap>
