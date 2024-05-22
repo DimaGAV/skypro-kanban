@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { topicStyles } from "../lib/topic";
+import { hover01, subttl } from "./common";
 
 export const ModalMain = styled.div`
   width: 100%;
@@ -153,7 +154,8 @@ export const FormArea = styled.textarea`
 `;
 
 export const FormBrowseArea = styled(FormArea)`
-  background: #eaeef6;
+  background: ${(props) => (props.isEditing ? "#ffffff" : "#eaeef6")};
+  /* background: #eaeef6; */
 `;
 
 export const CreateBtn = styled.button`
@@ -168,9 +170,8 @@ export const CreateBtn = styled.button`
   line-height: 1;
   color: #ffffff;
   float: right;
-  &:hover {
-    background-color: #33399b;
-  }
+
+  ${hover01}
 `;
 
 export const CardCalendar = styled.div`
@@ -181,10 +182,8 @@ export const CardCalendar = styled.div`
 export const CalendarTtl = styled.p`
   margin-bottom: 14px;
   padding: 0 7px;
-  color: #000;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1;
+
+  ${subttl}
 `;
 
 export const SelectedDate = styled.p`
@@ -196,9 +195,8 @@ export const SelectedDate = styled.p`
   line-height: 12px;
 `;
 
-export const SelectedDateSpan = styled(SelectedDate)`
-color: black
-/* display: block */
+export const SelectedDateSpan = styled.span`
+  color: black;
 `;
 
 export const Categories = styled.div`
@@ -207,10 +205,7 @@ export const Categories = styled.div`
 
 export const CategoriesTtl = styled.p`
   margin-bottom: 14px;
-  color: #000;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1;
+  ${subttl}
 `;
 
 export const CategoriesThemes = styled.div`
@@ -248,4 +243,33 @@ export const BrowseTopBlock = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-bottom: 18px;
+`;
+
+export const Status = styled.div`
+  margin-bottom: 11px;
+`;
+
+export const StatusPTtl = styled.p`
+  margin-bottom: 14px;
+  ${subttl}
+`;
+export const StatusThemes = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+`;
+export const StatusThem = styled.div`
+  border-radius: 24px;
+  border: 0.7px solid rgba(148, 166, 190, 0.4);
+  color: #94a6be;
+  padding: 11px 14px 10px;
+  margin-right: 7px;
+  margin-bottom: 7px;
+  display: ${({ $isEditing }) => ($isEditing ? "block" : "none")};
+  & p {
+    font-size: 14px;
+    line-height: 1;
+    letter-spacing: -0.14px;
+  }
 `;

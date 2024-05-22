@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { breakpoints } from "../../lib/breakpoints";
+import { hover01 } from "../../styled/common";
 
 export const Header = styled.header`
   width: 100%;
@@ -77,9 +78,7 @@ export const BtnMainNew = styled.button`
   font-weight: 500;
   margin-right: 20px;
 
-  &:hover {
-    background-color: #33399b;
-  }
+  ${hover01}
 
   @media screen and (max-width: ${breakpoints.md}px) {
     z-index: 3;

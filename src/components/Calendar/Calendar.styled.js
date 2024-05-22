@@ -2,7 +2,7 @@ import { DayPicker } from "react-day-picker";
 import styled from "styled-components";
 
 export const CustomCalendar = styled(DayPicker)`
-  --rdp-cell-size: 27px;
+  --rdp-cell-size: 28px;
   --rdp-caption-font-size: 14px;
   --rdp-accent-color: #94A6BE;
   --rdp-background-color: #EAEEF6;

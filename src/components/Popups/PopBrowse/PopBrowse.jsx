@@ -13,7 +13,7 @@ const PopBrowse = ({ id }) => {
   const { user } = useUser();
   const navigate = useNavigate();
   const [error, setError] = useState(null);
-  const [isEditing, setIsEditing] = useState(false);
+  const [isEditing, setIsEditing] = useState(true);
 
   const handleDeleteTask = async (e) => {
     if (user && user.token) {
@@ -122,15 +122,15 @@ const PopBrowse = ({ id }) => {
                 </M.CategoriesThemeP>
               </M.CategoriesTheme>
             </M.BrowseTopBlock>
-            <div className="pop-browse__status status">
-              <p className="status__p subttl">Статус</p>
-              <div className="status__themes">
+            <M.Status>
+              <M.StatusPTtl>Статус</M.StatusPTtl>
+              <M.StatusThemes>
                 <div className="status__theme _hide">
                   <p>Без статуса</p>
                 </div>
-                <div className="status__theme _gray">
-                  <p className="_gray">Нужно сделать</p>
-                </div>
+                <M.StatusThem isEditing={isEditing}>
+                  <p>Нужно сделать</p>
+                </M.StatusThem>
                 <div className="status__theme _hide">
                   <p>В работе</p>
                 </div>
@@ -140,8 +140,8 @@ const PopBrowse = ({ id }) => {
                 <div className="status__theme _hide">
                   <p>Готово</p>
                 </div>
-              </div>
-            </div>
+              </M.StatusThemes>
+            </M.Status>
             <M.Wrap>
               <M.Form id="formBrowseCard" action="#">
                 <M.FormBlock>
@@ -164,21 +164,15 @@ const PopBrowse = ({ id }) => {
                   setSelected={handleDateChange}
                 />
                 <M.SelectedDate>
-                  Срок исполнения:
+                  Срок исполнения:{" "}
                   <M.SelectedDateSpan>
                     {currentTask.date
                       ? currentTask.date.toLocaleDateString()
-                      : "Не выбрано"}
+                      : " "}
                   </M.SelectedDateSpan>
                 </M.SelectedDate>
               </M.CardCalendar>
             </M.Wrap>
-            {/* <div className="theme-down__categories theme-down">
-              <p className="categories__p subttl">Категория</p>
-              <div className="categories__theme _orange _active-category">
-                <p className="_orange">Web Design</p>
-              </div>
-            </div> */}
             <div className="pop-browse__btn-browse ">
               <div className="btn-group">
                 <button className="btn-browse__edit _btn-bor _hover03">

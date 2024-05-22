@@ -1,7 +1,7 @@
-._hover03:hover {
+/* ._hover03:hover {
   background-color: #33399b;
   color: #FFFFFF;
-}
+} */
 
 ._hover03:hover a {
   color: #FFFFFF;
@@ -468,7 +468,7 @@
   flex-direction: column;
 } */
 
-.form-browse__area {
+/* .form-browse__area {
   max-width: 370px;
   width: 100%;
   outline: none;
@@ -481,9 +481,9 @@
   letter-spacing: -0.14px;
   margin-top: 14px;
   height: 200px;
-}
+} */
 
-.form-browse__area::-moz-placeholder {
+/* .form-browse__area::-moz-placeholder {
   font-weight: 400;
   font-size: 14px;
   line-height: 1px;
@@ -497,7 +497,7 @@
   line-height: 1px;
   color: #94A6BE;
   letter-spacing: -0.14px;
-}
+} */
 
 .status {
   margin-bottom: 11px;
