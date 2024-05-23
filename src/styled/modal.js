@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { topicStyles } from "../lib/topic";
-import { hover01, subttl } from "./common";
+import { hover01, hover03, subttl } from "./common";
 
 export const ModalMain = styled.div`
   width: 100%;
@@ -135,6 +135,7 @@ export const FormArea = styled.textarea`
   max-width: 370px;
   margin-top: 14px;
   height: 200px;
+  resize: none;
   &::-moz-placeholder {
     font-weight: 400;
     font-size: 14px;
@@ -275,4 +276,43 @@ export const StatusThem = styled.div`
     line-height: 1;
     letter-spacing: -0.14px;
   }
+`;
+
+export const BrowseButtons = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+`;
+
+export const BrowseButtonsGroup = styled.div`
+  margin-right: 8px;
+  display: ${(props) => (props.isEditing ? "block" : "none")};
+`;
+
+export const BrowseButton = styled.button`
+  height: 30px;
+  margin-bottom: 10px;
+  padding: 0 14px;
+`;
+export const BrowseButtonBor = styled(BrowseButton)`
+  border-radius: 4px;
+  border: 0.7px solid var(--palette-navy-60, #565eef);
+  outline: none;
+  margin-right: 8px;
+  background: transparent;
+  font-family: "Roboto";
+  color: #565eef;
+
+  ${hover03}
+`;
+
+export const BrowseButtonBg = styled(BrowseButton)`
+  border-radius: 4px;
+  background: #565eef;
+  border: none;
+  outline: none;
+  color: #ffffff;
+
+  ${hover01}
 `;
