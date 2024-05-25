@@ -278,8 +278,10 @@ export const StatusTheme = styled.div`
 `;
 export const CurrentStatus = styled(StatusTheme)`
   background-color: #94a6be;
-  color: #fff;
-  display: inline-block;
+  display: ${(props) => (props.isEditing ? "inline-block" : "none")};
+  & p {
+    color: #fff;
+  }
 `;
 
 export const BrowseButtons = styled.div`

@@ -1,4 +1,4 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Calendar from "../../Calendar/Calendar";
 import { AppRoutes } from "../../../App";
 import * as M from "../../../styled/modal";
@@ -112,7 +112,8 @@ const PopBrowse = ({ id }) => {
         status: currentTask.status,
         description: currentTask.description,
         date: currentTask.date,
-        // topic: currentTask.topic,
+        topic: currentTask.topic,
+        title: currentTask.title,
       }).then((data) => {
         getTasks(data.tasks);
         navigate(AppRoutes.MAIN);
@@ -130,6 +131,7 @@ const PopBrowse = ({ id }) => {
           <M.Content>
             <M.BrowseTopBlock>
               <M.Title>{currentTask.title}</M.Title>
+              {error && <p style={{ color: "red" }}>{error}</p>}
               <M.CategoriesTheme
                 $isActive
                 $topicColor={getTopicColor(currentTask.topic)}
@@ -143,7 +145,9 @@ const PopBrowse = ({ id }) => {
             </M.BrowseTopBlock>
             <M.Status>
               <M.StatusPTtl>Статус</M.StatusPTtl>
-              <M.CurrentStatus isEditing={!isEditing} >{currentTask.status}</M.CurrentStatus>
+              <M.CurrentStatus isEditing={!isEditing}>
+                <p>{currentTask.status}</p>
+              </M.CurrentStatus>
               <M.StatusThemes>
                 {[
                   "Без статуса",
@@ -204,21 +208,21 @@ const PopBrowse = ({ id }) => {
                 </M.BrowseButtonBor>
               </M.BrowseButtonsGroup>
               <M.BrowseButtonsGroup isEditing={isEditing}>
-              <M.BrowseButtonBor onClick={handleEditTask}>
-                Сохранить
-              </M.BrowseButtonBor>
-              <M.BrowseButtonBor onClick={handleCancelEdit}>
-                Отменить
-              </M.BrowseButtonBor>
-              <M.BrowseButtonBor onClick={handleDeleteTask}>
-                Удалить задачу
-              </M.BrowseButtonBor>
-            </M.BrowseButtonsGroup>
+                <M.BrowseButtonBor onClick={handleEditTask}>
+                  Сохранить
+                </M.BrowseButtonBor>
+                <M.BrowseButtonBor onClick={handleCancelEdit}>
+                  Отменить
+                </M.BrowseButtonBor>
+                <M.BrowseButtonBor onClick={handleDeleteTask}>
+                  Удалить задачу
+                </M.BrowseButtonBor>
+              </M.BrowseButtonsGroup>
               <Link to={AppRoutes.MAIN}>
                 <M.BrowseButtonBg>Закрыть</M.BrowseButtonBg>
               </Link>
             </M.BrowseButtons>
-            </M.Content>
+          </M.Content>
         </M.Block>
       </M.Container>
     </M.ModalMain>

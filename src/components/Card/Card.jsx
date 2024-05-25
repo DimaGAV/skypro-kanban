@@ -14,10 +14,7 @@ const Card = ({ id, topic, title, date }) => {
           <T.Topic $topicColor={topicColor}>
             <T.TopicText>{topic}</T.TopicText>
           </T.Topic>
-          <Link to={{
-              pathname: AppRoutes.CARD + "/" + id,
-              /* state: { topic, title, date } */
-            }}>
+          <Link to={AppRoutes.CARD + "/" + id}>
             <T.Btn>
               <T.BtnDiv></T.BtnDiv>
               <T.BtnDiv></T.BtnDiv>

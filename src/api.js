@@ -107,10 +107,10 @@ export async function updateTask({
   token,
   id,
   status,
-  // topic,
+  topic,
   description,
   date,
-  // title,
+  title,
 }) {
   const response = await fetch(`${tasksHost}/${id}`, {
     headers: {
@@ -118,8 +118,8 @@ export async function updateTask({
     },
     method: "PUT",
     body: JSON.stringify({
-      // title,
-      // topic,
+      title,
+      topic,
       status,
       description,
       date,
