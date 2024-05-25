@@ -42,15 +42,15 @@ navigate(AppRoutes.USER_EXIT)
 							</S.BtnMainNew>            
 						<S.User href="#" 
 						onClick = {handleClick}>{user.name}</S.User>
-						<div className="header__pop-user-set pop-user-set" id="user-set-target">
-							<p className="pop-user-set__name">{user.name}</p>
-							<p className="pop-user-set__mail">{user.login}</p>
-							<div className="pop-user-set__theme">
+						<S.PopUserSet id="user-set-target">
+							<S.PUSName>{user.name}</S.PUSName>
+							<S.PUSMial>{user.login}</S.PUSMial>
+							<S.PUSTheme>
 								<p>Темная тема</p>
-								<input type="checkbox" className="checkbox" name="checkbox" />
-							</div>
-							<button onClick={handleExit} type="button" className="_hover03">Выйти</button>
-						</div>
+								<S.PUSThemeInput type="checkbox" />
+							</S.PUSTheme>
+							<S.PUSButton onClick={handleExit} type="button">Выйти</S.PUSButton>
+						</S.PopUserSet>
 					</S.Nav>					
 				</S.Block>
 			</Container>			

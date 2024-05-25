@@ -12,7 +12,6 @@ const PopBrowse = ({ id }) => {
   const { tasks, getTasks } = useTasks();
   const { user } = useUser();
   const navigate = useNavigate();
-  // const location = useLocation();
   const [error, setError] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
 
@@ -21,14 +20,14 @@ const PopBrowse = ({ id }) => {
     status: "",
     description: "",
     date: null,
-    topic: "фигВам",
+    topic: "",
   });
 
   useEffect(() => {
     const task = tasks.find((task) => task._id === id);
     if (task) {
       setCurrentTask({
-        title: task.title || "Новая задача",
+        title: task.title || "",
         status: task.status || "",
         description: task.description || "",
         date: task.date ? new Date(task.date) : null,
@@ -96,11 +95,6 @@ const PopBrowse = ({ id }) => {
         return;
       }
 
-      if (!currentTask.status) {
-        setError("Не выбран статус!");
-        return;
-      }
-
       if (!currentTask.date) {
         setError("Не выбран срок исполнения!");
         return;
@@ -145,7 +139,7 @@ const PopBrowse = ({ id }) => {
             </M.BrowseTopBlock>
             <M.Status>
               <M.StatusPTtl>Статус</M.StatusPTtl>
-              <M.CurrentStatus isEditing={!isEditing}>
+              <M.CurrentStatus $isEditing={!isEditing}>
                 <p>{currentTask.status}</p>
               </M.CurrentStatus>
               <M.StatusThemes>
@@ -158,8 +152,8 @@ const PopBrowse = ({ id }) => {
                 ].map((status) => (
                   <M.StatusTheme
                     key={status}
-                    isEditing={isEditing}
-                    isActive={currentTask.status === status}
+                    $isEditing={isEditing}
+                    $isActive={currentTask.status === status}
                     onClick={() => handleStatusChange(status)}
                   >
                     <p>{status}</p>
@@ -170,7 +164,9 @@ const PopBrowse = ({ id }) => {
             <M.Wrap>
               <M.Form id="formBrowseCard" action="#">
                 <M.FormBlock>
-                  <M.Subttl htmlFor="textArea01">Описание задачи</M.Subttl>
+                  <M.Subttl /* htmlFor="textArea01" */>
+                    Описание задачи
+                  </M.Subttl>
                   <M.FormBrowseArea
                     name="description"
                     id="textArea01"
@@ -178,7 +174,7 @@ const PopBrowse = ({ id }) => {
                     value={currentTask.description}
                     onChange={handleInputChange}
                     placeholder="Введите описание задачи..."
-                    isEditing={isEditing}
+                    $isEditing={isEditing}
                   ></M.FormBrowseArea>
                 </M.FormBlock>
               </M.Form>
@@ -199,7 +195,7 @@ const PopBrowse = ({ id }) => {
               </M.CardCalendar>
             </M.Wrap>
             <M.BrowseButtons>
-              <M.BrowseButtonsGroup isEditing={!isEditing}>
+              <M.BrowseButtonsGroup $isEditing={!isEditing}>
                 <M.BrowseButtonBor onClick={handleEditClick}>
                   Редактировать задачу
                 </M.BrowseButtonBor>
@@ -207,7 +203,7 @@ const PopBrowse = ({ id }) => {
                   Удалить задачу
                 </M.BrowseButtonBor>
               </M.BrowseButtonsGroup>
-              <M.BrowseButtonsGroup isEditing={isEditing}>
+              <M.BrowseButtonsGroup $isEditing={isEditing}>
                 <M.BrowseButtonBor onClick={handleEditTask}>
                   Сохранить
                 </M.BrowseButtonBor>

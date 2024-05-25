@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { topicStyles } from "../lib/topic";
 import { hover01, hover03, subttl } from "./common";
+import { breakpoints } from "../lib/breakpoints";
 
 export const ModalMain = styled.div`
   width: 100%;
@@ -11,10 +12,14 @@ export const ModalMain = styled.div`
   top: 0;
   left: 0;
   z-index: 7;
+  @media screen and (max-width: ${breakpoints.lg}px) {
+    top: 70px;
+  }
 `;
 export const CardMain = styled(ModalMain)`
   z-index: 6;
 `;
+
 export const ExitMain = styled(ModalMain)`
   z-index: 5;
 `;
@@ -29,6 +34,16 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   background: rgba(0, 0, 0, 0.4);
+
+  @media screen and (max-width: ${breakpoints.lg}px) {
+    padding: 0;
+    justify-content: flex-start;
+  }
+
+  @media screen and (max-width: ${breakpoints.md}px) {
+    padding: 0;
+    justify-content: flex-start;
+  }
 `;
 
 export const Block = styled.div`
@@ -41,6 +56,13 @@ export const Block = styled.div`
   border-radius: 10px;
   border: 0.7px solid #d4dbe5;
   position: relative;
+
+  @media screen and (max-width: ${breakpoints.lg}px) {
+    border-radius: 0;
+  }
+  @media screen and (max-width: ${breakpoints.md}px) {
+    padding: 20px 16px 32px;
+  }
 `;
 
 export const Content = styled.div`
@@ -72,6 +94,10 @@ export const Wrap = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+
+  @media screen and (max-width: ${breakpoints.lg}px) {
+    display: block;
+  }
 `;
 
 export const Form = styled.form`
@@ -79,6 +105,12 @@ export const Form = styled.form`
   width: 100%;
   display: block;
   margin-bottom: 20px;
+
+  @media screen and (max-width: ${breakpoints.md}px) {
+    max-width: 100%;
+    width: 100%;
+    display: block;
+  }
 `;
 
 export const FormBlock = styled.div`
@@ -152,10 +184,14 @@ export const FormArea = styled.textarea`
     letter-spacing: -0.14px;
     padding: 9px 0;
   }
+  @media screen and (max-width: ${breakpoints.md}px) {
+    max-width: 100%;
+    height: 37px;
+  }
 `;
 
 export const FormBrowseArea = styled(FormArea)`
-  background: ${(props) => (props.isEditing ? "#ffffff" : "#eaeef6")};
+  background: ${(props) => (props.$isEditing ? "#ffffff" : "#eaeef6")};
 `;
 
 export const CreateBtn = styled.button`
@@ -172,11 +208,25 @@ export const CreateBtn = styled.button`
   float: right;
 
   ${hover01}
+
+  @media screen and (max-width: ${breakpoints.md}px) {
+    width: 100%;
+    height: 40px;
+  }
 `;
 
 export const CardCalendar = styled.div`
   width: 182px;
   margin-bottom: 20px;
+
+  @media screen and (max-width: ${breakpoints.lg}px) {
+    max-width: 340px;
+    width: 100%;
+  }
+
+  @media screen and (max-width: ${breakpoints.md}px) {
+    width: 100%;
+  }
 `;
 
 export const CalendarTtl = styled.p`
@@ -184,6 +234,10 @@ export const CalendarTtl = styled.p`
   padding: 0 7px;
 
   ${subttl}
+
+  @media screen and (max-width: ${breakpoints.lg}px) {
+    padding: 0;
+  }
 `;
 
 export const SelectedDate = styled.p`
@@ -266,11 +320,11 @@ export const StatusTheme = styled.div`
   padding: 11px 14px 10px;
   margin-right: 7px;
   margin-bottom: 7px;
-  display: ${(props) => (props.isEditing ? "block" : "none")};
-  background-color: ${(props) => (props.isActive ? "#94A6BE" : "#fff")};
+  display: ${(props) => (props.$isEditing ? "block" : "none")};
+  background-color: ${(props) => (props.$isActive ? "#94A6BE" : "#fff")};
 
   & p {
-    color: ${(props) => (props.isActive ? "#fff" : "#94a6be")};
+    color: ${(props) => (props.$isActive ? "#fff" : "#94a6be")};
     font-size: 14px;
     line-height: 1;
     letter-spacing: -0.14px;
@@ -278,7 +332,7 @@ export const StatusTheme = styled.div`
 `;
 export const CurrentStatus = styled(StatusTheme)`
   background-color: #94a6be;
-  display: ${(props) => (props.isEditing ? "inline-block" : "none")};
+  display: ${(props) => (props.$isEditing ? "inline-block" : "none")};
   & p {
     color: #fff;
   }
@@ -293,14 +347,25 @@ export const BrowseButtons = styled.div`
 
 export const BrowseButtonsGroup = styled.div`
   margin-right: 8px;
-  display: ${(props) => (props.isEditing ? "block" : "none")};
+  display: ${(props) => (props.$isEditing ? "block" : "none")};
+
+  @media screen and (max-width: ${breakpoints.md}px) {
+    width: 100%;
+    margin-right: 0px;
+  }
 `;
 
 export const BrowseButton = styled.button`
   height: 30px;
   margin-bottom: 10px;
   padding: 0 14px;
+
+  @media screen and (max-width: ${breakpoints.md}px) {
+    width: 100%;
+    height: 40px;
+  }
 `;
+
 export const BrowseButtonBor = styled(BrowseButton)`
   border-radius: 4px;
   border: 0.7px solid var(--palette-navy-60, #565eef);
