@@ -193,23 +193,29 @@ const PopBrowse = ({ id }) => {
             </M.Wrap>
             <M.BrowseButtons>
               <M.BrowseButtonsGroup isEditing={!isEditing}>
-                <M.BrowseButtonBor onClick={handleEditClick}>Редактировать задачу</M.BrowseButtonBor>
+                <M.BrowseButtonBor onClick={handleEditClick}>
+                  Редактировать задачу
+                </M.BrowseButtonBor>
                 <M.BrowseButtonBor onClick={handleDeleteTask}>
                   Удалить задачу
                 </M.BrowseButtonBor>
               </M.BrowseButtonsGroup>
-              <Link to={AppRoutes.MAIN}>
-                <M.BrowseButtonBg>Закрыть</M.BrowseButtonBg>
-              </Link>
-            </M.BrowseButtons>
-            <M.BrowseButtonsGroup isEditing={isEditing}>
-              <M.BrowseButtonBor onClick={handleEditTask}>Сохранить</M.BrowseButtonBor>
-              <M.BrowseButtonBor onClick={handleCancelEdit}>Отменить</M.BrowseButtonBor>
+              <M.BrowseButtonsGroup isEditing={isEditing}>
+              <M.BrowseButtonBor onClick={handleEditTask}>
+                Сохранить
+              </M.BrowseButtonBor>
+              <M.BrowseButtonBor onClick={handleCancelEdit}>
+                Отменить
+              </M.BrowseButtonBor>
               <M.BrowseButtonBor onClick={handleDeleteTask}>
                 Удалить задачу
               </M.BrowseButtonBor>
             </M.BrowseButtonsGroup>
-          </M.Content>
+              <Link to={AppRoutes.MAIN}>
+                <M.BrowseButtonBg>Закрыть</M.BrowseButtonBg>
+              </Link>
+            </M.BrowseButtons>
+            </M.Content>
         </M.Block>
       </M.Container>
     </M.ModalMain>
