@@ -110,6 +110,7 @@ const PopBrowse = ({ id }) => {
         status: currentTask.status,
         description: currentTask.description,
         date: currentTask.date,
+        // topic: currentTask.topic,
       }).then((data) => {
         getTasks(data.tasks);
         navigate(AppRoutes.MAIN);
