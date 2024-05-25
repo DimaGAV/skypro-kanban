@@ -9,10 +9,10 @@ import { useEffect, useState } from "react";
 import { getTopicColor } from "../../../data";
 
 const PopBrowse = ({ id }) => {
-  const { getTasks } = useTasks();
+  const { tasks, getTasks } = useTasks();
   const { user } = useUser();
   const navigate = useNavigate();
-  const location = useLocation();
+  // const location = useLocation();
   const [error, setError] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
 
@@ -25,17 +25,19 @@ const PopBrowse = ({ id }) => {
   });
 
   useEffect(() => {
-    if (location.state) {
-      const { topic, title, date } = location.state;
+    const task = tasks.find((task) => task._id === id);
+    if (task) {
       setCurrentTask({
-        topic,
-        title,
-        date: new Date(date),
-        status: "",
-        description: "",
+        title: task.title || "Новая задача",
+        status: task.status || "",
+        description: task.description || "",
+        date: task.date ? new Date(task.date) : null,
+        topic: task.topic || "",
       });
+    } else {
+      setError("Задача не найдена");
     }
-  }, [location.state]);
+  }, [tasks, id]);
 
   const handleDeleteTask = async (e) => {
     if (user && user.token) {

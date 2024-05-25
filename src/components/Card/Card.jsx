@@ -16,7 +16,7 @@ const Card = ({ id, topic, title, date }) => {
           </T.Topic>
           <Link to={{
               pathname: AppRoutes.CARD + "/" + id,
-              state: { topic, title, date }
+              /* state: { topic, title, date } */
             }}>
             <T.Btn>
               <T.BtnDiv></T.BtnDiv>
