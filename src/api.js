@@ -116,7 +116,7 @@ export async function updateTask({
     headers: {
       Authorization: `Bearer ${token}`,
     },
-    method: "POST",
+    method: "PUT",
     body: JSON.stringify({
       title,
       topic,
