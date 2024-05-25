@@ -259,7 +259,7 @@ export const StatusThemes = styled.div`
   align-items: flex-start;
   justify-content: flex-start;
 `;
-export const StatusThem = styled.div`
+export const StatusTheme = styled.div`
   border-radius: 24px;
   border: 0.7px solid rgba(148, 166, 190, 0.4);
   color: #94a6be;
@@ -275,6 +275,11 @@ export const StatusThem = styled.div`
     line-height: 1;
     letter-spacing: -0.14px;
   }
+`;
+export const CurrentStatus = styled(StatusTheme)`
+  background-color: #94a6be;
+  color: #fff;
+  display: inline-block;
 `;
 
 export const BrowseButtons = styled.div`

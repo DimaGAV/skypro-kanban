@@ -143,6 +143,7 @@ const PopBrowse = ({ id }) => {
             </M.BrowseTopBlock>
             <M.Status>
               <M.StatusPTtl>Статус</M.StatusPTtl>
+              <M.CurrentStatus isEditing={!isEditing} >{currentTask.status}</M.CurrentStatus>
               <M.StatusThemes>
                 {[
                   "Без статуса",
@@ -151,14 +152,14 @@ const PopBrowse = ({ id }) => {
                   "Тестирование",
                   "Готово",
                 ].map((status) => (
-                  <M.StatusThem
+                  <M.StatusTheme
                     key={status}
                     isEditing={isEditing}
                     isActive={currentTask.status === status}
                     onClick={() => handleStatusChange(status)}
                   >
                     <p>{status}</p>
-                  </M.StatusThem>
+                  </M.StatusTheme>
                 ))}
               </M.StatusThemes>
             </M.Status>
