@@ -191,41 +191,24 @@ const PopBrowse = ({ id }) => {
                 </M.SelectedDate>
               </M.CardCalendar>
             </M.Wrap>
-            <div className="pop-browse__btn-browse ">
-              <div className="btn-group">
-                <button className="btn-browse__edit _btn-bor _hover03">
-                  <a href="#">Редактировать задачу</a>
-                </button>
-                <button
-                  onClick={handleDeleteTask}
-                  className="btn-browse__delete _btn-bor _hover03"
-                >
-                  <a href="#">Удалить задачу</a>
-                </button>
-              </div>
-              <button className="btn-browse__close _btn-bg _hover01">
-                <Link to={AppRoutes.MAIN}>Закрыть</Link>
-              </button>
-            </div>
-            <div className="pop-browse__btn-edit _hide">
-              <div className="btn-group">
-                <button className="btn-edit__edit _btn-bg _hover01">
-                  <a href="#">Сохранить</a>
-                </button>
-                <button className="btn-edit__edit _btn-bor _hover03">
-                  <a href="#">Отменить</a>
-                </button>
-                <button
-                  className="btn-edit__delete _btn-bor _hover03"
-                  id="btnDelete"
-                >
-                  <a href="#">Удалить задачу</a>
-                </button>
-              </div>
-              <button className="btn-edit__close _btn-bg _hover01">
-                <a href="#">Закрыть</a>
-              </button>
-            </div>
+            <M.BrowseButtons>
+              <M.BrowseButtonsGroup isEditing={!isEditing}>
+                <M.BrowseButtonBor onClick={handleEditClick}>Редактировать задачу</M.BrowseButtonBor>
+                <M.BrowseButtonBor onClick={handleDeleteTask}>
+                  Удалить задачу
+                </M.BrowseButtonBor>
+              </M.BrowseButtonsGroup>
+              <Link to={AppRoutes.MAIN}>
+                <M.BrowseButtonBg>Закрыть</M.BrowseButtonBg>
+              </Link>
+            </M.BrowseButtons>
+            <M.BrowseButtonsGroup isEditing={isEditing}>
+              <M.BrowseButtonBor onClick={handleEditTask}>Сохранить</M.BrowseButtonBor>
+              <M.BrowseButtonBor onClick={handleCancelEdit}>Отменить</M.BrowseButtonBor>
+              <M.BrowseButtonBor onClick={handleDeleteTask}>
+                Удалить задачу
+              </M.BrowseButtonBor>
+            </M.BrowseButtonsGroup>
           </M.Content>
         </M.Block>
       </M.Container>
