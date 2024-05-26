@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import "../../App.css";
 import Header from "../../components/Header/Header";
 import Main from "../../components/Main/Main";
 import { GlobalStyle } from "../../components/Global/Global.styled";

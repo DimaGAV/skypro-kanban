@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { topicStyles } from "../lib/topic";
 import { hover01, hover03, subttl } from "./common";
 import { breakpoints } from "../lib/breakpoints";
-import { Link } from "react-router-dom";
 
 export const ModalMain = styled.div`
   width: 100%;
