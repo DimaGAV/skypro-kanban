@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { hover03 } from "../../../styled/common";
+import { breakpoints } from "../../../lib/breakpoints";
 
 export const PopExit = styled.div`
   width: 100%;
@@ -34,6 +35,10 @@ export const PEBlock = styled.div`
   border-radius: 10px;
   border: 0.7px solid #d4dbe5;
   box-shadow: 0px 4px 67px -12px rgba(0, 0, 0, 0.13);
+
+  @media screen and (max-width: ${breakpoints.sm}px) {
+    padding: 50px 20px;
+  }
 `;
 
 export const PETtl = styled.div`
@@ -52,6 +57,10 @@ export const PEFormGroup = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media screen and (max-width: ${breakpoints.sm}px) {
+    display: block;
+  }
 `;
 
 export const PEExitYes = styled.button`
@@ -72,6 +81,13 @@ export const PEExitYes = styled.button`
   margin-right: 10px;
 
   ${hover03}
+
+  @media screen and (max-width: ${breakpoints.sm}px) {
+    width: 100%;
+    height: 40px;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
 `;
 
 export const PEExitNo = styled(PEExitYes)`

@@ -98,6 +98,7 @@ export const BtnMainNewText = styled.p`
 `;
 
 export const PopUserSet = styled.div`
+  display: none;
   position: absolute;
   top: 61px;
   right: 0;

@@ -187,6 +187,7 @@ export const FormArea = styled.textarea`
   @media screen and (max-width: ${breakpoints.md}px) {
     max-width: 100%;
     height: 37px;
+    overflow: hidden;
   }
 `;
 
@@ -247,6 +248,11 @@ export const SelectedDate = styled.p`
   font-size: 10px;
   font-weight: 400;
   line-height: 12px;
+
+  @media screen and (max-width: ${breakpoints.lg}px) {
+    font-size: 14px;
+    padding: 0;
+  }
 `;
 
 export const SelectedDateSpan = styled.span`
