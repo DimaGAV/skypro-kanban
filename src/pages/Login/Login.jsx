@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { AppRoutes } from "../../App";
-import * as S from "../../components/Form/Form";
+import * as S from "../../components/Form/Form.styled";
 import { useState } from "react";
 import { loginUser } from "../../api";
 import { useUser } from "../../hooks/useUser";
@@ -14,13 +14,17 @@ export default function Login() {
 
   const handleLogin = async (event) => {
     event.preventDefault();
-    if (!formData.login || formData.login.trim().length === 0) {
-      setAddLoginError("Не введен логин!");
+    if (formData.login.trim().length === 0) {
+      setAddLoginError(
+        "Введенные вами данные не распознаны. Проверьте свой логин и пароль и повторите попытку входа."
+      );
       return;
     }
 
-    if (!formData.password || formData.password.trim().length === 0) {
-      setAddLoginError("Не введен пароль!");
+    if (formData.password.trim().length === 0) {
+      setAddLoginError(
+        "Введенные вами данные не распознаны. Проверьте свой логин и пароль и повторите попытку входа."
+      );
       return;
     }
 
@@ -65,7 +69,7 @@ export default function Login() {
           name="password"
           placeholder="Пароль"
         />
-        {addLoginError && <p style={{ color: "red" }}>{addLoginError}</p>}
+        {addLoginError && <S.TextError>{addLoginError}</S.TextError>}
         <S.FormButton type="submit">Войти</S.FormButton>
         <S.FormFooter>
           <S.FooterText>Нужно зарегистрироваться?</S.FooterText>
