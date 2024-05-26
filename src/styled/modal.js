@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { topicStyles } from "../lib/topic";
 import { hover01, hover03, subttl } from "./common";
 import { breakpoints } from "../lib/breakpoints";
+import { Link } from "react-router-dom";
 
 export const ModalMain = styled.div`
   width: 100%;
@@ -296,6 +297,24 @@ export const CategoriesTheme = styled.div`
   ${CategoriesThemeP} {
     color: ${({ $topicColor }) => topicStyles[$topicColor]?.color || "#06b16e"};
   }
+
+  @media screen and (max-width: ${breakpoints.md}px) {
+    margin-bottom: 20px;
+  }
+`;
+
+export const ThemeDown = styled.div`
+  display: none;
+  @media screen and (max-width: ${breakpoints.md}px) {
+    display: block;
+  }
+`;
+
+export const ThemeTop = styled.div`
+  display: block;
+  @media screen and (max-width: ${breakpoints.md}px) {
+    display: none;
+  }
 `;
 
 export const BrowseTopBlock = styled.div`
@@ -365,6 +384,7 @@ export const BrowseButton = styled.button`
   height: 30px;
   margin-bottom: 10px;
   padding: 0 14px;
+  font-family: "Roboto";
 
   @media screen and (max-width: ${breakpoints.md}px) {
     width: 100%;
@@ -378,7 +398,6 @@ export const BrowseButtonBor = styled(BrowseButton)`
   outline: none;
   margin-right: 8px;
   background: transparent;
-  font-family: "Roboto";
   color: #565eef;
 
   ${hover03}

@@ -7,6 +7,7 @@ import { useTasks } from "../../../hooks/useTasks";
 import { useUser } from "../../../hooks/useUser";
 import { useEffect, useState } from "react";
 import { getTopicColor } from "../../../data";
+import { BtnMainNewText } from "../../Header/Header.styled";
 
 const PopBrowse = ({ id }) => {
   const { tasks, getTasks } = useTasks();
@@ -81,6 +82,7 @@ const PopBrowse = ({ id }) => {
 
   const handleCancelEdit = () => {
     setIsEditing(false);
+    setError(null);
   };
 
   const handleEditTask = async (e) => {
@@ -126,16 +128,18 @@ const PopBrowse = ({ id }) => {
             <M.BrowseTopBlock>
               <M.Title>{currentTask.title}</M.Title>
               {error && <p style={{ color: "red" }}>{error}</p>}
-              <M.CategoriesTheme
-                $isActive
-                $topicColor={getTopicColor(currentTask.topic)}
-              >
-                <M.CategoriesThemeP
+              <M.ThemeTop>
+                <M.CategoriesTheme
+                  $isActive
                   $topicColor={getTopicColor(currentTask.topic)}
                 >
-                  {currentTask.topic}
-                </M.CategoriesThemeP>
-              </M.CategoriesTheme>
+                  <M.CategoriesThemeP
+                    $topicColor={getTopicColor(currentTask.topic)}
+                  >
+                    {currentTask.topic}
+                  </M.CategoriesThemeP>
+                </M.CategoriesTheme>
+              </M.ThemeTop>
             </M.BrowseTopBlock>
             <M.Status>
               <M.StatusPTtl>Статус</M.StatusPTtl>
@@ -194,6 +198,19 @@ const PopBrowse = ({ id }) => {
                 </M.SelectedDate>
               </M.CardCalendar>
             </M.Wrap>
+            <M.ThemeDown>
+              <M.CategoriesTtl>Категория</M.CategoriesTtl>
+              <M.CategoriesTheme
+                $isActive
+                $topicColor={getTopicColor(currentTask.topic)}
+              >
+                <M.CategoriesThemeP
+                  $topicColor={getTopicColor(currentTask.topic)}
+                >
+                  {currentTask.topic}
+                </M.CategoriesThemeP>
+              </M.CategoriesTheme>
+            </M.ThemeDown>
             <M.BrowseButtons>
               <M.BrowseButtonsGroup $isEditing={!isEditing}>
                 <M.BrowseButtonBor onClick={handleEditClick}>
@@ -214,9 +231,11 @@ const PopBrowse = ({ id }) => {
                   Удалить задачу
                 </M.BrowseButtonBor>
               </M.BrowseButtonsGroup>
-              <Link to={AppRoutes.MAIN}>
-                <M.BrowseButtonBg>Закрыть</M.BrowseButtonBg>
-              </Link>
+              <M.BrowseButtonBg>
+                <Link to={AppRoutes.MAIN}>
+                  <BtnMainNewText>Закрыть</BtnMainNewText>
+                </Link>
+              </M.BrowseButtonBg>
             </M.BrowseButtons>
           </M.Content>
         </M.Block>
