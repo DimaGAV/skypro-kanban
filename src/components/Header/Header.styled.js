@@ -27,7 +27,7 @@ export const Logo = styled.div`
 `;
 
 export const Nav = styled.nav`
-  max-width: 290px;
+  max-width: 400px;
   padding: 0;
   display: flex;
   align-items: center;
@@ -95,6 +95,7 @@ export const BtnMainNew = styled.button`
 
 export const BtnMainNewText = styled.p`
   color: #ffffff;
+  padding: 0 5px;
 `;
 
 export const PopUserSet = styled.div`

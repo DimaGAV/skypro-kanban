@@ -50,8 +50,8 @@ const Header = () => {
               <S.PUSName>{user.name}</S.PUSName>
               <S.PUSMial>{user.login}</S.PUSMial>
               <S.PUSTheme>
-                <p>Темная тема</p>
-                <S.PUSThemeInput type="checkbox" />
+                {/* <p>Темная тема</p>
+                <S.PUSThemeInput type="checkbox" /> */}
               </S.PUSTheme>
               <S.PUSButton onClick={handleExit} type="button">
                 Выйти
