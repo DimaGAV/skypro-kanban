@@ -48,7 +48,9 @@ export async function registerUser({ name, login, password }) {
   });
 
   if (!response.ok) {
-    throw new Error("Такой пользователь уже существует");
+    throw new Error(
+      "Введенные вами данные не корректны. Чтобы завершить регистрацию, введите данные корректно и повторите попытку."
+    );
   }
   const data = await response.json();
 
