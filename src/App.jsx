@@ -9,7 +9,6 @@ import PopUser from "./components/Popups/PopUser/PopUser";
 import PopNewCard from "./components/Popups/PopNewCard/PopNewCard";
 import { TaskProvider } from "./context/tasks";
 
-
 export const AppRoutes = {
   MAIN: "/",
   CARD: "/card",
@@ -21,7 +20,6 @@ export const AppRoutes = {
 };
 
 export default function App() {
-
   return (
     <Routes>
       <Route
@@ -34,10 +32,7 @@ export default function App() {
         <Route path={AppRoutes.MAIN} element={<MainPage />}>
           <Route path={AppRoutes.CARD + "/:id"} element={<CardPage />} />
           <Route path={AppRoutes.NEWCARD} element={<PopNewCard />} />
-          <Route
-            path={AppRoutes.USER_EXIT}
-            element={<PopUser />}
-          />
+          <Route path={AppRoutes.USER_EXIT} element={<PopUser />} />
         </Route>
       </Route>
 
