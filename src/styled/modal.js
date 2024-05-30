@@ -12,6 +12,10 @@ export const ModalMain = styled.div`
   top: 0;
   left: 0;
   z-index: 7;
+  &:target {
+    display: block;
+  }
+
   @media screen and (max-width: ${breakpoints.lg}px) {
     top: 70px;
   }
@@ -34,13 +38,9 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   background: rgba(0, 0, 0, 0.4);
+  position: fixed;
 
   @media screen and (max-width: ${breakpoints.lg}px) {
-    padding: 0;
-    justify-content: flex-start;
-  }
-
-  @media screen and (max-width: ${breakpoints.md}px) {
     padding: 0;
     justify-content: flex-start;
   }
@@ -91,6 +91,9 @@ export const Close = styled.p`
   }
 `;
 export const Wrap = styled.div`
+  position: relative;
+  top: 0;
+  left: 0;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
