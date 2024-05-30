@@ -14,6 +14,7 @@ export const PopExit = styled.div`
 `;
 
 export const PEContainer = styled.div`
+  position: fixed;
   width: 100%;
   height: 100%;
   min-height: 100vh;
