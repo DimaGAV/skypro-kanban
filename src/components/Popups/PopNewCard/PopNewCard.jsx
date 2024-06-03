@@ -45,7 +45,6 @@ const PopNewCard = () => {
   };
 
   const handleNewTaskAdd = async (e) => {
-    
     try {
       e.preventDefault();
       if (!newTask.title || newTask.title.trim().length === 0) {
@@ -128,9 +127,11 @@ const PopNewCard = () => {
                 />
                 <M.SelectedDate>
                   Выберите срок исполнения.{" "}
-                  {newTask.date
-                    ? newTask.date.toLocaleDateString()
-                    : "Не выбрано"}
+                  <M.SelectedDateSpan>
+                    {newTask.date
+                      ? newTask.date.toLocaleDateString()
+                      : "Не выбрано"}
+                  </M.SelectedDateSpan>
                 </M.SelectedDate>
               </M.CardCalendar>
             </M.Wrap>

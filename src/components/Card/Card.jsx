@@ -6,7 +6,7 @@ import { AppRoutes } from "../../App";
 
 const Card = ({ id, topic, title, date }) => {
   const topicColor = getTopicColor(topic);
-  const cardDoneDate = new Date(date).toLocaleDateString()
+  const cardDoneDate = new Date(date).toLocaleDateString();
   return (
     <S.Item>
       <S.Card>
@@ -23,7 +23,7 @@ const Card = ({ id, topic, title, date }) => {
           </Link>
         </T.Group>
         <T.Content>
-            <T.Title>{title}</T.Title>
+          <T.Title>{title}</T.Title>
           <T.Date>
             <svg
               xmlns="http://www.w3.org/2000/svg"

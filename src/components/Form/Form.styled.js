@@ -39,6 +39,16 @@ export const FormInput = styled.input`
   border-radius: 8px;
 `;
 
+export const TextError = styled.div`
+  width: 247px;
+  color: red;
+  font-family: Arial;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 150%;
+  text-align: center;
+`;
+
 export const FormButton = styled.button`
   width: 248px;
   height: 30px;

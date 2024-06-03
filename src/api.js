@@ -1,5 +1,9 @@
+const baseHost = "https://wedev-api.sky.pro/api";
+const tasksHost = `${baseHost}/kanban`;
+const userHost = `${baseHost}/user`;
+
 export async function getCadrs({ token }) {
-  const response = await fetch("https://wedev-api.sky.pro/api/kanban", {
+  const response = await fetch(tasksHost, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -14,7 +18,7 @@ export async function getCadrs({ token }) {
 }
 
 export async function loginUser({ login, password }) {
-  const response = await fetch("https://wedev-api.sky.pro/api/user/login", {
+  const response = await fetch(userHost + "/login", {
     method: "POST",
     body: JSON.stringify({
       login,
@@ -34,7 +38,7 @@ export async function loginUser({ login, password }) {
 }
 
 export async function registerUser({ name, login, password }) {
-  const response = await fetch("https://wedev-api.sky.pro/api/user", {
+  const response = await fetch(userHost, {
     method: "POST",
     body: JSON.stringify({
       name,
@@ -44,7 +48,9 @@ export async function registerUser({ name, login, password }) {
   });
 
   if (!response.ok) {
-    throw new Error("Такой пользователь уже существует");
+    throw new Error(
+      "Введенные вами данные не корректны. Чтобы завершить регистрацию, введите данные корректно и повторите попытку."
+    );
   }
   const data = await response.json();
 
@@ -59,7 +65,7 @@ export async function addNewTask({
   description,
   date,
 }) {
-  const response = await fetch("https://wedev-api.sky.pro/api/kanban", {
+  const response = await fetch(tasksHost, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -74,7 +80,58 @@ export async function addNewTask({
   });
 
   if (!response.ok) {
-    throw new Error("Введенные данные не корректны! Задача не может быть создана. Пожалуйста, заполните все поля, выбирете категорию и дату выполнения");
+    throw new Error(
+      "Введенные данные не корректны! Задача не может быть создана. Пожалуйста, заполните все поля, выбирете категорию и дату выполнения"
+    );
+  }
+
+  const data = await response.json();
+  return data;
+}
+
+export async function deleteCadr({ token, id }) {
+  const response = await fetch(`${tasksHost}/${id}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error("Ошибка удаления данных");
+  }
+
+  const data = await response.json();
+  return data;
+}
+
+export async function updateTask({
+  token,
+  id,
+  status,
+  topic,
+  description,
+  date,
+  title,
+}) {
+  const response = await fetch(`${tasksHost}/${id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    method: "PUT",
+    body: JSON.stringify({
+      title,
+      topic,
+      status,
+      description,
+      date,
+    }),
+  });
+
+  if (!response.ok) {
+    throw new Error(
+      "Введенные данные не корректны! Задача не может быть откоректирована"
+    );
   }
 
   const data = await response.json();

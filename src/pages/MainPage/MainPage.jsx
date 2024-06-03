@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import "../../App.css";
 import Header from "../../components/Header/Header";
 import Main from "../../components/Main/Main";
 import { GlobalStyle } from "../../components/Global/Global.styled";
@@ -22,17 +21,6 @@ function MainPage() {
     top: "50%",
     transform: "translate(-50%, -50%)",
   };
-
-  /* function onCardAdd() {
-    const newCard = {
-      _id: cards.length + 1,
-      topic: "Тема",
-      title: "Название задачи",
-      date: new Date().toLocaleDateString(),
-      status: statusList[0],
-    };
-    setCards([...cards, newCard]);
-  } */
 
   useEffect(() => {
     const onCards = async () => {

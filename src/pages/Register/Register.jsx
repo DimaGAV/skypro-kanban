@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { AppRoutes } from "../../App";
-import * as S from "../../components/Form/Form";
+import * as S from "../../components/Form/Form.styled";
 import { useState } from "react";
 import { registerUser } from "../../api";
 
@@ -14,18 +14,24 @@ export default function Register() {
 
   const handleRegister = async (event) => {
     event.preventDefault();
-    if (!formData.name || formData.name.trim().length === 0) {
-      setRegError("Не введено имя!");
+    if (formData.name.trim().length === 0) {
+      setRegError(
+        "Введенные вами данные не корректны. Чтобы завершить регистрацию, заполните все поля в форме."
+      );
       return;
     }
 
-    if (!formData.login || formData.login.trim().length === 0) {
-      setRegError("Не введен логин!");
+    if (formData.login.trim().length === 0) {
+      setRegError(
+        "Введенные вами данные не корректны. Чтобы завершить регистрацию, заполните все поля в форме."
+      );
       return;
     }
 
-    if (!formData.password || formData.password.trim().length === 0) {
-      setRegError("Не введен пароль!");
+    if (formData.password.trim().length === 0) {
+      setRegError(
+        "Введенные вами данные не корректны. Чтобы завершить регистрацию, заполните все поля в форме."
+      );
       return;
     }
 
@@ -78,7 +84,7 @@ export default function Register() {
           placeholder="Пароль"
           onChange={handleInputChange}
         />
-        {regError && <p style={{ color: "red" }}>{regError}</p>}
+        {regError && <S.TextError>{regError}</S.TextError>}
         <S.FormButton type="submit">Зарегистрироваться</S.FormButton>
         <S.FormFooter>
           Уже есть аккаунт?{" "}

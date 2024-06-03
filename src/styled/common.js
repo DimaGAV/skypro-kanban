@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { breakpoints } from "../lib/breakpoints";
 
 export const Container = styled.div`
@@ -19,4 +19,24 @@ export const Wrapper = styled.div`
   min-height: 100vh;
   overflow: hidden;
   background-color: #f1f1f1;
+`;
+
+export const hover01 = css`
+  &:hover {
+    background-color: #33399b;
+  }
+`;
+
+export const hover03 = css`
+  &:hover {
+    background-color: #33399b;
+    color: #ffffff;
+  }
+`;
+
+export const subttl = css`
+  color: #000;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
 `;
